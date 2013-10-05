@@ -12,7 +12,7 @@ pattern-matching against text, but too often they are 'write once, read never'. 
 when you could express it as:
 
 ```javascript
-  var r = new Regularity()
+  var r = new Regularity();
   r.starWwith(3, 'digits').
     then('-').
     then(2, 'letters').
@@ -20,7 +20,7 @@ when you could express it as:
     oneOf(['a','b']).
     between([2,4], 'a').
     endWith('$').
-    done()
+    done();
 ```
 
 While taking up a bit more space, Regularity expressions are much more readable than their cryptic counterparts.
@@ -82,7 +82,7 @@ return a RegExp object created from the specified pattern.
 
 ### Example
 
-```
+```javascript
 r = new Regularity();
 r.startWith(3, 'digits').
   append('-').
@@ -92,7 +92,7 @@ r.startWith(3, 'digits').
   between([2,4], 'a').
   endWith('X').
   done();
-/^\[0-9\]3-\[A-Za-z\]2#?[a|b]a{2,4}X$/
+/* /^\[0-9\]3-\[A-Za-z\]2#?[a|b]a{2,4}X$/ */
 ```
 
 ### To Do
