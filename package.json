@@ -1,0 +1,9 @@
+{ "name" : "Regularity",
+  "main" : "./lib/regularity.js",
+  "version": '0.1.0',
+  "author": "Fernando Martinez de la Cueva <me@oinak.com> (http://oinak.com/)",
+  "license" : "BSD",
+  "files": ["./lib/regularity.js"],
+  "main": "regularity",
+  "thanks": "Andrew Berls for the original idea and the Regularity ruby gem: (https://rubygems.org/gems/regularity)"
+}
