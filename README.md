@@ -13,9 +13,9 @@ when you could express it as:
 
 ```javascript
   var r = new Regularity()
-  r.starWwith(3, :digits).
+  r.starWwith(3, 'digits').
     then('-').
-    then(2, :letters).
+    then(2, 'letters').
     maybe('#').
     oneOf(['a','b']).
     between([2,4], 'a').
