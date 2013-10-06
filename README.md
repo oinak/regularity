@@ -13,14 +13,14 @@ when you could express it as:
 
 ```javascript
   var r = new Regularity()
-  r.starWwith(3, :digits).
+  r.starWith(3, 'digits').
     then('-').
-    then(2, :letters).
+    then(2, 'letters').
     maybe('#').
     oneOf(['a','b']).
     between([2,4], 'a').
     endWith('$').
-    done()
+    done();
 ```
 
 While taking up a bit more space, Regularity expressions are much more readable than their cryptic counterparts.
@@ -90,9 +90,9 @@ r.startWith(3, 'digits').
   maybe('#').
   oneOf(['a','b']).
   between([2,4], 'a').
-  endWith('X').
+  endWith('$').
   done();
-/^\[0-9\]3-\[A-Za-z\]2#?[a|b]a{2,4}X$/
+/^\[0-9\]3-\[A-Za-z\]2#?[a|b]a{2,4}\$$/
 ```
 
 ### To Do
