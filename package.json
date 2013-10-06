@@ -1,6 +1,6 @@
 { "name" : "regularity",
   "main": "regularity",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": "Fernando Martinez de la Cueva <me@oinak.com> (http://oinak.com/)",
   "contributors": ["Elías Alonso <elias@redradix.com> (http://redradix.com/)"],
   "license" : "MIT",
