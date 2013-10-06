@@ -12,8 +12,8 @@ pattern-matching against text, but too often they are 'write once, read never'. 
 when you could express it as:
 
 ```javascript
-  var r = new Regularity()
-  r.starWith(3, 'digits').
+  var r = new Regularity();
+  r.startWith(3, 'digits').
     then('-').
     then(2, 'letters').
     maybe('#').
@@ -82,7 +82,7 @@ return a RegExp object created from the specified pattern.
 
 ### Example
 
-```
+```javascript
 r = new Regularity();
 r.startWith(3, 'digits').
   append('-').
@@ -92,7 +92,7 @@ r.startWith(3, 'digits').
   between([2,4], 'a').
   endWith('$').
   done();
-/^\[0-9\]3-\[A-Za-z\]2#?[a|b]a{2,4}\$$/
+/* /^\[0-9\]3-\[A-Za-z\]2#?[a|b]a{2,4}X$/ */
 ```
 
 ### To Do
