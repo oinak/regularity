@@ -6,7 +6,7 @@ Regularity is a friendly regular expression builder for Node. Regular expression
 pattern-matching against text, but too often they are 'write once, read never'. After all, who wants to try and deciper
 
 ```javascript
-/^[0-9]{3}-[A-Za-z]{2}#?[a|b]a{2,4}\$$/
+/^[0-9]{3}-[A-Za-z]{2}#?[a|b]a{2,4}\$$/i
 ```
 
 when you could express it as:
@@ -19,6 +19,7 @@ when you could express it as:
     maybe('#').
     oneOf(['a','b']).
     between([2,4], 'a').
+    insensitive().
     endWith('$').
     done();
 ```
@@ -55,7 +56,7 @@ or a numbered constraint such as `then(2, 'digits')`. The following special iden
 It doesn't matter if the identifier is pluralized, i.e. `then(2, 'letters')` works in addition to `then(1, 'letter')`
 
 
-The following methods are supported:
+The following expression methods are supported:
 
 `startWith(pattern)`: The line must start with the specified pattern
 
@@ -65,7 +66,7 @@ The following methods are supported:
 
 `maybe(pattern)`: Zero or one of the specified pattern
 
-`oneOf(values)`: Specify an alternation, e.g. `one_of(['a', 'b', 'c'])`
+`oneOf(values)`: Specify an alternation, e.g. `oneOf(['a', 'b', 'c'])`
 
 `between(range, pattern)`: Specify a bounded repetition, e.g. `between([2,4], :digits)`
 
@@ -76,6 +77,14 @@ The following methods are supported:
 `atLeast(n, pattern)`: Specify that the pattern or identifer should appear n or more times
 
 `atMost(n, pattern)`: Specify that the pattern or identifer should appear n or less times
+
+The following options methods are supported (may be called just once each):
+
+`insensitive()`: Specify that the pattern doesn't distinguish between upcase and lowercase
+
+`mulltiLine()`: Specify that the pattern may span along several lines
+
+`global()`: Specify that all ocurrences of the pattern are matched instead of just the first
 
 The DSL methods are chainable, meaning they return `this`. You can also call `regex` on a Regularity object to
 return a RegExp object created from the specified pattern.
@@ -90,14 +99,15 @@ r.startWith(3, 'digits').
   maybe('#').
   oneOf(['a','b']).
   between([2,4], 'a').
+  insensitive().
   endWith('$').
   done();
-/* /^[0-9]3-[A-Za-z]2#?[a|b]a{2,4}\$$/ */
+/* /^[0-9]3-[A-Za-z]2#?[a|b]a{2,4}\$$/i */
 ```
 
 ### To Do
 
-Include semantic chainable support for the RegExp switches 'g' 'm' and 'i'
+Include tests, and document use cases for all functions.
 
 ### Idea
 
