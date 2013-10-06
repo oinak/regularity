@@ -92,7 +92,7 @@ r.startWith(3, 'digits').
   between([2,4], 'a').
   endWith('$').
   done();
-/* /^\[0-9\]3-\[A-Za-z\]2#?[a|b]a{2,4}X$/ */
+/* /^\[0-9\]3-\[A-Za-z\]2#?[a|b]a{2,4}\$$/ */
 ```
 
 ### To Do
