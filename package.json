@@ -1,9 +1,9 @@
-{ "name" : "Regularity",
-  "main" : "./lib/regularity.js",
-  "version": '0.1.1',
+{ "name" : "regularity",
+  "main": "regularity",
+  "version": "0.1.3",
   "author": "Fernando Martinez de la Cueva <me@oinak.com> (http://oinak.com/)",
   "license" : "MIT",
   "files": ["./lib/regularity.js"],
-  "main": "regularity",
-  "thanks": "Andrew Berls for the original idea and the Regularity ruby gem: (https://rubygems.org/gems/regularity)"
+  "thanks": "Andrew Berls for the original idea and the Regularity ruby gem: (https://rubygems.org/gems/regularity)",
+  "homepage": "https://github.com/oinak/regularity"
 }
