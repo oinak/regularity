@@ -2,8 +2,7 @@
 
 Javascript port of the very fine Regularity (ruby) gem for easy construction of regular expresions.
 
-Regularity is a friendly regular expression builder for Node. Regular expressions are a powerful way of
-pattern-matching against text, but too often they are 'write once, read never'. After all, who wants to try and deciper
+Regularity is a friendly regular expression builder for Node. Regular expressions are a powerful way of pattern-matching against text, but too often they are 'write once, read never'. After all, who wants to try and deciper
 
 ```javascript
 /^[0-9]{3}-[A-Za-z]{2}#?[a|b]a{2,4}\$$/i
