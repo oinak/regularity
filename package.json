@@ -1,10 +1,22 @@
-{ "name" : "regularity",
+{
+  "name": "regularity",
   "main": "regularity",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "Fernando Martinez de la Cueva <me@oinak.com> (http://oinak.com/)",
-  "contributors": ["Elías Alonso <elias@redradix.com> (http://redradix.com/)"],
-  "license" : "MIT",
-  "files": ["./lib/regularity.js"],
+  "contributors": [
+    "Elías Alonso <elias@redradix.com> (http://redradix.com/)",
+    "Laura Paredes Viera <laura@wearepeople.io> (http://wearepeople.io)",
+    "Alejandra Goicoechea <alex.goicoechea@wearepeople.io> (http://wearepeople.io)"
+  ],
+  "license": "MIT",
+  "files": [
+    "./lib/regularity.js",
+    "./spec/support/jasmine.json",
+    "./spec/regularity_spec.js"
+  ],
   "thanks": "Andrew Berls for the original idea and the Regularity ruby gem: (https://rubygems.org/gems/regularity)",
-  "homepage": "https://github.com/oinak/regularity"
+  "homepage": "https://github.com/oinak/regularity",
+  "devDependencies": {
+    "jasmine": "^2.1.1"
+  }
 }
