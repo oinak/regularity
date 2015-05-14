@@ -8,6 +8,10 @@
     "Laura Paredes Viera <laura@wearepeople.io> (http://wearepeople.io)",
     "Alejandra Goicoechea <alex.goicoechea@wearepeople.io> (http://wearepeople.io)"
   ],
+  "repository" : {
+      "type" : "git",
+      "url" : "https://github.com/oinak/regularity"
+  },
   "license": "MIT",
   "files": [
     "./lib/regularity.js",
