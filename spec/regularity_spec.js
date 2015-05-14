@@ -41,11 +41,11 @@ describe("Regularity", function() {
             regex = regularity.startWith('a').done();
         });
 
-        it("matches positive", function(){
+        it("matches in the positive case", function(){
             expect(regex.test('abcde')).toBe(true);
         });
 
-        it("matches negative", function(){
+        it("does not match in the negative case", function(){
             expect(regex.test('edcba')).toBe(false);
         });
     });
@@ -56,11 +56,11 @@ describe("Regularity", function() {
             regex = regularity.endWith('a').done();
         });
 
-        it("matches positive", function(){
+        it("matches in the positive case", function(){
             expect(regex.test('edcba')).toBe(true);
         });
 
-        it("matches negative", function(){
+        it("does not match in the negative case", function(){
             expect(regex.test('abcde')).toBe(false);
         });
     });
@@ -86,15 +86,19 @@ describe("Regularity", function() {
             regex = regularity.oneOf(['a','bb','ccc']).done();
         });
 
-        it("matches with one", function(){
+        it("matches the first one", function(){
             expect(regex.test('addd')).toBe(true);
         });
 
-        it("matches with other", function(){
+        it("matches the second one", function(){
             expect(regex.test('dbb')).toBe(true);
         });
 
-        it("does not match", function(){
+        it("matches the third one", function() {
+            expect(regex.test('zkcccl')).toBe(true);
+        });
+
+        it("does not match when neither are present", function(){
             expect(regex.test('bccddd')).toBe(true);
         });
     });
