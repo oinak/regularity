@@ -36,54 +36,65 @@ describe("Regularity", function() {
     });
 
     describe("#startWith", function(){
+        var regex;
+        beforeEach(function() {
+            regex = regularity.startWith('a').done();
+        });
+
         it("matches positive", function(){
-            var regex = regularity.startWith('a').done();
             expect(regex.test('abcde')).toBe(true);
         });
 
         it("matches negative", function(){
-            var regex = regularity.startWith('a').done();
             expect(regex.test('edcba')).toBe(false);
         });
     });
 
     describe("#endWith", function(){
+        var regex;
+        beforeEach(function() {
+            regex = regularity.endWith('a').done();
+        });
+
         it("matches positive", function(){
-            var regex = regularity.endWith('a').done();
             expect(regex.test('edcba')).toBe(true);
         });
 
         it("matches negative", function(){
-            var regex = regularity.endWith('a').done();
             expect(regex.test('abcde')).toBe(false);
         });
     });
 
     describe("#maybe", function(){
-        it("matches with pattern", function(){
-            var regex = regularity.maybe('a').done();
+        var regex;
+        beforeEach(function() {
+            regex = regularity.maybe('a').done();
+        });
+
+        it("matches when the pattern is present", function(){
             expect(regex.test('aaaa')).toBe(true);
         });
 
-        it("matches without pattern", function(){
-            var regex = regularity.maybe('a').done();
+        it("matches when the pattern isn't present", function(){
             expect(regex.test('bbbb')).toBe(true);
         });
     });
 
     describe("#oneOf", function(){
+        var regex;
+        beforeEach(function() {
+            regex = regularity.oneOf(['a','bb','ccc']).done();
+        });
+
         it("matches with one", function(){
-            var regex = regularity.oneOf(['a','bb','ccc']).done();
             expect(regex.test('addd')).toBe(true);
         });
 
         it("matches with other", function(){
-            var regex = regularity.oneOf(['a','bb','ccc']).done();
             expect(regex.test('dbb')).toBe(true);
         });
 
         it("does not match", function(){
-            var regex = regularity.oneOf(['a','bb','ccc']).done();
             expect(regex.test('bccddd')).toBe(true);
         });
     });
