@@ -38,60 +38,60 @@ describe("Regularity", function() {
     describe("#startWith", function(){
         it("matches positive", function(){
             var regex = regularity.startWith('a').done();
-            expect(regex.test('abcde')).toBeTruthy();
+            expect(regex.test('abcde')).toBe(true);
         });
 
         it("matches negative", function(){
             var regex = regularity.startWith('a').done();
-            expect(regex.test('edcba')).toBeFalsy();
+            expect(regex.test('edcba')).toBe(false);
         });
     });
 
     describe("#endWith", function(){
         it("matches positive", function(){
             var regex = regularity.endWith('a').done();
-            expect(regex.test('edcba')).toBeTruthy();
+            expect(regex.test('edcba')).toBe(true);
         });
 
         it("matches negative", function(){
             var regex = regularity.endWith('a').done();
-            expect(regex.test('abcde')).toBeFalsy();
+            expect(regex.test('abcde')).toBe(false);
         });
     });
 
     describe("#maybe", function(){
         it("matches with pattern", function(){
             var regex = regularity.maybe('a').done();
-            expect(regex.test('aaaa')).toBeTruthy();
+            expect(regex.test('aaaa')).toBe(true);
         });
 
         it("matches without pattern", function(){
             var regex = regularity.maybe('a').done();
-            expect(regex.test('bbbb')).toBeTruthy();
+            expect(regex.test('bbbb')).toBe(true);
         });
     });
 
     describe("#oneOf", function(){
         it("matches with one", function(){
             var regex = regularity.oneOf(['a','bb','ccc']).done();
-            expect(regex.test('addd')).toBeTruthy();
+            expect(regex.test('addd')).toBe(true);
         });
 
         it("matches with other", function(){
             var regex = regularity.oneOf(['a','bb','ccc']).done();
-            expect(regex.test('dbb')).toBeTruthy();
+            expect(regex.test('dbb')).toBe(true);
         });
 
         it("does not match", function(){
             var regex = regularity.oneOf(['a','bb','ccc']).done();
-            expect(regex.test('bccddd')).toBeTruthy();
+            expect(regex.test('bccddd')).toBe(true);
         });
     });
 
     describe("#between", function(){
         it("doesn't match under lower bound", function(){
             var regex = regularity.between([2,3], 'a').done();
-            expect(regex.test('addd')).toBeFalsy();
+            expect(regex.test('addd')).toBe(false);
         });
     });
 
