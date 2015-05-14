@@ -13,12 +13,12 @@ describe("Regularity", function() {
     });
 
     describe("return from done()", function() {
-        it("is a function", function() {
-            expect(typeof regularity.done().test).toBe('function');
+        it("is a RegExp instance", function() {
+            expect(regularity.done() instanceof RegExp).toBe(true);
         });
 
-        it (" has correct source", function() {
-            expect(regularity.done().source).toBe('(?:)');
+        it ("returns an empty regexp by default", function() {
+            expect(regularity.done()).toEqual(new RegExp());
         });
     });
 
