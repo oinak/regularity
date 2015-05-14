@@ -22,17 +22,17 @@ describe("Regularity", function() {
         });
     });
 
-    describe("escapes regexp special chars", function() {
-        var chars = [ '*', '.', '?', '^', '+', '$', '|', '(', ')', '[', ']',
-          '{', '}' ];
+    describe("escapes regexp special characters", function() {
+        var charactersToBeEscaped = [ '*', '.', '?', '^', '+',
+        '$', '|', '(', ')', '[', ']', '{', '}' ];
 
-        function testEscapedChar(c) {
-            it ("escapes '" + c + "'", function() {
-                var regex = regularity.append( c ).done();
-                expect(regex.source).toBe("\\" + c);
+        charactersToBeEscaped.forEach(function testEscapedChar(character) {
+            it("escapes '" + character + "'", function() {
+                var currentRegex = regularity.append(character).done();
+
+                expect(currentRegex.source).toBe("\\" + character);
             });
-        }
-        for(var i = 0; i < chars.length; i++ ) { testEscapedChar(chars[i]); }
+        });
     });
 
     describe("#startsWith", function(){
