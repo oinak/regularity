@@ -35,7 +35,7 @@ describe("Regularity", function() {
         });
     });
 
-    describe("#startsWith", function(){
+    describe("#startWith", function(){
         it("matches positive", function(){
             var regex = regularity.startWith('a').done();
             expect(regex.test('abcde')).toBeTruthy();
