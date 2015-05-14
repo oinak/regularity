@@ -85,7 +85,11 @@ The following options methods are supported (may be called just once each):
 
 `global()`: Specify that all ocurrences of the pattern are matched instead of just the first
 
-The DSL methods are chainable, meaning they return `this`. You can also call `regex` on a Regularity object to
+The DSL methods are chainable, meaning they return `this`. Notice, however, that in order
+for `regularity` to work properly, the methods must be called in the order in which the
+regular expression is formed, from left to right.
+
+You can also call `regex` on a Regularity object to
 return a RegExp object created from the specified pattern.
 
 ### Example
