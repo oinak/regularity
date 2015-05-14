@@ -1,6 +1,6 @@
 {
   "name": "regularity",
-  "main": "regularity",
+  "main": "lib/regularity",
   "version": "0.3.0",
   "author": "Fernando Martinez de la Cueva <me@oinak.com> (http://oinak.com/)",
   "contributors": [
