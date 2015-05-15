@@ -104,9 +104,32 @@ describe("Regularity", function() {
     });
 
     describe("#between", function(){
-        it("doesn't match under lower bound", function(){
-            var regex = regularity.between([2,3], 'a').done();
+        var regex;
+        beforeEach(function() {
+            regex = regularity.between([3, 5], 'a').done();
+        });
+
+        it("matches when there is the right amount of consecutive occurences", function() {
+            expect(regex.test('aaadd')).toBe(true);
+            expect(regex.test('llaaaa')).toBe(true);
+            expect(regex.test('lmaaaaakl')).toBe(true);
+        });
+
+        it("doesn't match when the count is less than the lower bound", function(){
             expect(regex.test('addd')).toBe(false);
+            expect(regex.test('aadkb')).toBe(false);
+        });
+
+        // see https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_special_characters
+        it("*does* match when the count is more than the upper bound", function() {
+            expect(regex.test('daaaaaalk')).toBe(true);
+            expect(regex.test('dmaaaaaaaaaalm')).toBe(true);
+        });
+
+        it("doesn't match when there are enough occurences but they are not consecutive", function() {
+            expect(regex.test('azaazza')).toBe(false);
+            expect(regex.test('zkalaamaa')).toBe(false);
+            expect(regex.test('azakalaamaama')).toBe(false);
         });
     });
 
