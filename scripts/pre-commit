@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+git stash -q --keep-index
+
+./node_modules/jasmine/bin/jasmine.js
+TEST_RESULT="$?"
+
+git stash pop -q
+
+exit $TEST_RESULT
