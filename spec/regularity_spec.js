@@ -1,4 +1,3 @@
-
 var Regularity = require('../lib/regularity.js');
 
 describe("Regularity", function() {
