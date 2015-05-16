@@ -13,8 +13,9 @@ describe("Regularity", function() {
     });
 
     describe("escapes regexp special characters", function() {
-        var charactersToBeEscaped = [ '*', '.', '?', '^', '+',
-        '$', '|', '(', ')', '[', ']', '{', '}' ];
+        var charactersToBeEscaped = ['*', '.', '?', '^', '+',
+                                     '$', '|', '(', ')', '[',
+                                     ']', '{', '}'];
 
         charactersToBeEscaped.forEach(function testEscapedChar(character) {
             it("escapes '" + character + "'", function() {
@@ -45,6 +46,40 @@ describe("Regularity", function() {
 
         it("can only be called as the first method in the chain", function() {
 
+        });
+    });
+
+    describe("#startWith -- checks against literal regexp", function() {
+        var regex;
+
+        it("single character", function() {
+            regex = regularity.startWith('a').done();
+            expect(regex).toEqual(/^a/);
+        });
+
+        it("numbered pattern", function() {
+            regex = regularity.startWith(4, 'digits').done();
+            expect(regex).toEqual(/^[0-9]{4}/);
+        });
+
+        it("one character", function() {
+            regex = regularity.startWith(1, 'p').done();
+            expect(regex).toEqual(/^p{1}/);
+        });
+
+        it("more than one occurence of one character", function() {
+            regex = regularity.startWith(6, 'p').done();
+            expect(regex).toEqual(/^p{6}/);
+        });
+
+        xit("one occurence of several characters", function() {
+            regex = regularity.startWith(1, 'hey').done();
+            expect(regex).toEqual(/^(?:hey){1}/);
+        });
+
+        xit("more than one occurence of several characters", function() {
+            regex = regularity.startWith(5, 'hey').done();
+            expect(regex).toEqual(/^(?:hey){5}/);
         });
     });
 
