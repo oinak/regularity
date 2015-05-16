@@ -8,17 +8,8 @@ describe("Regularity", function() {
     });
 
     it("is an object constructor", function() {
+        expect(typeof Regularity).toBe('function');
         expect(typeof regularity).toBe('object');
-    });
-
-    describe("return from done()", function() {
-        it("is a RegExp instance", function() {
-            expect(regularity.done() instanceof RegExp).toBe(true);
-        });
-
-        it ("returns an empty regexp by default", function() {
-            expect(regularity.done()).toEqual(new RegExp());
-        });
     });
 
     describe("escapes regexp special characters", function() {
@@ -34,7 +25,7 @@ describe("Regularity", function() {
         });
     });
 
-    describe("#startWith", function() {
+    describe("#startWith requires that the passed pattern occur exactly at the beginning of the input", function() {
         var regex;
         beforeEach(function() {
             regex = regularity.startWith('a').done();
@@ -47,9 +38,17 @@ describe("Regularity", function() {
         it("does not match in the negative case", function() {
             expect(regex.test('edcba')).toBe(false);
         });
+
+        it("can only be called once", function() {
+
+        });
+
+        it("can only be called as the first method in the chain", function() {
+
+        });
     });
 
-    describe("#endWith", function() {
+    describe("#endWith requires that the passed pattern occur exactly at the end of the input", function() {
         var regex;
         beforeEach(function() {
             regex = regularity.endWith('a').done();
@@ -62,9 +61,17 @@ describe("Regularity", function() {
         it("does not match in the negative case", function() {
             expect(regex.test('abcde')).toBe(false);
         });
+
+        it("can only be called once", function() {
+
+        });
+
+        it("can only be called as the last method in the chain (except for #done)", function() {
+
+        });
     });
 
-    describe("#maybe", function() {
+    describe("#maybe requires that the passed pattern occur either one or zero times", function() {
         var regex;
         beforeEach(function() {
             regex = regularity.maybe('a').done();
@@ -79,7 +86,7 @@ describe("Regularity", function() {
         });
     });
 
-    describe("#oneOf", function() {
+    describe("#oneOf requires that at least one of the passed patterns occur", function() {
         var regex;
         beforeEach(function() {
             regex = regularity.oneOf(['a','bb','ccc']).done();
@@ -102,7 +109,7 @@ describe("Regularity", function() {
         });
     });
 
-    describe("#between", function() {
+    describe("#between requires that the passed pattern occur a number of consecutive times within the specified interval", function() {
         var regex;
         beforeEach(function() {
             regex = regularity.between([3, 5], 'a').done();
@@ -130,28 +137,58 @@ describe("Regularity", function() {
             expect(regex.test('zkalaamaa')).toBe(false);
             expect(regex.test('azakalaamaama')).toBe(false);
         });
+
+        it("throws a native error when the lower bound is greater than the upper bound", function() {
+        });
     });
 
+    describe("#append requires that the passed pattern occur after what has been declared so far (and before whatever is declared afterwards)", function() {
+
+    });
+
+    it("#then is just an alias for #append", function() {
+
+    });
+
+    describe("#zeroOrMore requires that the passed pattern occur any number of consecutive times, including zero", function() {
+
+    });
+
+    describe("#oneOrMore requires that the passed pattern occur consecutively at least one time", function() {
+
+    });
+
+    describe("#atLeast requires that the passed pattern occur consecutively at least the specified number of times", function() {
+
+    });
+
+    describe("#atMost requires that the passed pattern occur consecutively at most the specified number of times", function() {
+
+    });
+
+    describe("#insensitive specifies that the search must be done case-insensitively", function() {
+
+    });
+
+    describe("#global specifies that the search must be performed as many times as necessary to identify all matches", function() {
+
+    });
+
+    describe("#multiline specifies that the input must be treated as multiple lines", function() {
+
+    });
+
+    describe("#done", function() {
+        it("returns a RegExp instance", function() {
+            expect(regularity.done() instanceof RegExp).toBe(true);
+        });
+
+        it ("returns an empty regexp by default", function() {
+            expect(regularity.done()).toEqual(new RegExp());
+        });
+    });
+
+    it("#regexp is just an alias for #done", function() {
+        expect(regularity.regexp).toBe(regularity.done);
+    });
 });
-
-
-
-
-// append: [Function],
-
-// zeroOrMore: [Function],
-
-// oneOrMore: [Function],
-
-// atLeast: [Function],
-
-// atMost: [Function],
-
-// insensitive: [Function],
-
-// global: [Function],
-
-// multiLine: [Function],
-
-// regexp: [Function] }
-
