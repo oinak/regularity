@@ -1,4 +1,5 @@
 var Regularity = require('../lib/regularity.js');
+var errors = require('../lib/errors');
 
 describe("Regularity", function() {
     var regularity;
@@ -39,14 +40,38 @@ describe("Regularity", function() {
         it("does not match in the negative case", function() {
             expect(regexp.test('edcba')).toBe(false);
         });
+    });
 
-        it("can only be called once", function() {
+    describe("#startWith can only be called as the first method in the chain", function() {
+        var someDefaultArgumentsFor = {
+            'startWith' : ['z'], // this verifies that 'startWith' can only be called once
+            'append':     [2, 'a'],
+            'then' :      [ 4, 'm'],
+            'endWith':    ['k'],
+            'maybe':      ['foo'],
+            'oneOf':      [['p', 'q']],
+            'between':    [[3, 6], 'alphanumeric'],
+            'zeroOrMore': ['whitespace'],
+            'oneOrMore':  ['lowercase'],
+            'atLeast':    [4, 'b'],
+            'atMost':     [5, 'z']
+        };
 
-        });
+        var excludedMethods = ["insensitive", "global", "multiLine", "done", "regexp"];
 
-        it("can only be called as the first method in the chain", function() {
 
-        });
+        Object.keys(new Regularity())
+            .filter(function(method) {
+                return (excludedMethods.indexOf(method) === -1);
+            })
+            .forEach(function(method) {
+                it("#startWith can't be called after #" + method, function() {
+                    expect(function() {
+                        regularity[method].apply(regularity, someDefaultArgumentsFor[method])
+                            .startWith('whatever');
+                    }).toThrow(errors.MethodMustBeTheFirstToBeCalled('startWith'));
+                });
+            });
     });
 
     describe("#startWith -- checks against literal regexp", function() {
