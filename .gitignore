@@ -1,1 +1,10 @@
 node_modules
+
+# For posting to coveralls.io from your local machine.
+# This file contains the 'repo_token', which MUST NOT
+# be made public! Hence, tell Git to ignore it.
+.coveralls.yml
+
+
+# This is where istanbul drops its coverage report (when run locally)
+coverage

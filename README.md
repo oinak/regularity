@@ -1,4 +1,6 @@
 ## Regularity - Regular expressions for humans
+[![Build Status](https://travis-ci.org/angelsanz/regularity.svg?branch=master)](https://travis-ci.org/angelsanz/regularity)
+[![Coverage Status](https://coveralls.io/repos/angelsanz/regularity/badge.svg?branch=master)](https://coveralls.io/r/angelsanz/regularity?branch=master)
 
 Javascript port of the very fine Regularity (ruby) gem for easy construction of regular expresions.
 
@@ -57,13 +59,13 @@ It doesn't matter if the identifier is pluralized, i.e. `then(2, 'letters')` wor
 
 The following expression methods are supported:
 
-`startWith([n], pattern)`: The line must start with the specified pattern.
+`startWith([n,] pattern)`: The line must start with the specified pattern.
 If `n` is provided, then `n` consecutive amounts of the pattern are required.
 Passing `1` as `n` is equivalent to not passing `n` at all.
 
 `append(pattern)`: Append a pattern to the end (Also aliased to `then`)
 
-`endWith([n], pattern)`: The line must end with the specified pattern.
+`endWith([n,] pattern)`: The line must end with the specified pattern.
 If `n` is provided, then `n` consecutive amounts of the pattern are required.
 Passing `1` as `n` is equivalent to not passing `n` at all.
 
