@@ -110,6 +110,49 @@ describe("Regularity", function() {
         });
     });
 
+    describe("#endWith -- checks against literal regexp", function() {
+        var regexp;
+
+        describe("unnumbered", function() {
+            it("single character", function() {
+                regexp = regularity.endWith('a').done();
+                expect(regexp).toEqual(/a$/);
+            });
+
+            it("multiple characters", function() {
+                regexp = regularity.endWith('abc').done();
+                expect(regexp).toEqual(/abc$/);
+            });
+        });
+
+        describe("numbered", function() {
+            it("numbered pattern", function() {
+                regexp = regularity.endWith(4, 'alphanumeric').done();
+                expect(regexp).toEqual(/[A-Za-z0-9]{4}$/);
+            });
+
+            it("one occurrence of one character", function() {
+                regexp = regularity.endWith(1, 'p').done();
+                expect(regexp).toEqual(/p$/);
+            });
+
+            it("more than one occurence of one character", function() {
+                regexp = regularity.endWith(6, 'p').done();
+                expect(regexp).toEqual(/p{6}$/);
+            });
+
+            it("one occurence of several characters", function() {
+                regexp = regularity.endWith(1, 'hey').done();
+                expect(regexp).toEqual(/hey$/);
+            });
+
+            xit("more than one occurence of several characters", function() {
+                regexp = regularity.endWith(5, 'hey').done();
+                expect(regexp).toEqual(/(?:hey){5}$/);
+            });
+        });
+    });
+
     describe("#maybe requires that the passed pattern occur either one or zero times", function() {
         var regexp;
         beforeEach(function() {
