@@ -1,5 +1,6 @@
 ## Regularity - Regular expressions for humans
 [![Build Status](https://travis-ci.org/angelsanz/regularity.svg?branch=master)](https://travis-ci.org/angelsanz/regularity)
+[![Coverage Status](https://coveralls.io/repos/angelsanz/regularity/badge.svg?branch=master)](https://coveralls.io/r/angelsanz/regularity?branch=master)
 
 Javascript port of the very fine Regularity (ruby) gem for easy construction of regular expresions.
 
