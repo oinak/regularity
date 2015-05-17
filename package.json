@@ -1,30 +1,30 @@
 {
-  "name": "regularity",
-  "main": "lib/regularity",
-  "version": "0.3.0",
-  "author": "Fernando Martinez de la Cueva <me@oinak.com> (http://oinak.com/)",
-  "contributors": [
-    "Elías Alonso <elias@redradix.com> (http://redradix.com/)",
-    "Laura Paredes Viera <laura@wearepeople.io> (http://wearepeople.io)",
-    "Alejandra Goicoechea <alex.goicoechea@wearepeople.io> (http://wearepeople.io)"
-  ],
-  "repository" : {
-      "type" : "git",
-      "url" : "https://github.com/oinak/regularity"
-  },
-  "license": "MIT",
-  "files": [
-    "./lib/regularity.js",
-    "./spec/support/jasmine.json",
-    "./spec/regularity_spec.js"
-  ],
-  "scripts": {
-    "test": "./node_modules/jasmine/bin/jasmine.js"
-  },
-  "thanks": "Andrew Berls for the original idea and the Regularity ruby gem: (https://rubygems.org/gems/regularity)",
-  "homepage": "https://github.com/oinak/regularity",
-  "keywords": ["regular", "expression", "regex", "regexp", "dsl"],
-  "devDependencies": {
-    "jasmine": "^2.1.1"
-  }
+    "name": "regularity",
+    "main": "lib/regularity",
+    "version": "0.3.0",
+    "author": "Fernando Martinez de la Cueva <me@oinak.com> (http://oinak.com/)",
+    "contributors": [
+        "Elías Alonso <elias@redradix.com> (http://redradix.com/)",
+        "Laura Paredes Viera <laura@wearepeople.io> (http://wearepeople.io)",
+        "Alejandra Goicoechea <alex.goicoechea@wearepeople.io> (http://wearepeople.io)"
+    ],
+    "repository" : {
+            "type" : "git",
+            "url" : "https://github.com/oinak/regularity"
+    },
+    "license": "MIT",
+    "files": [
+        "./lib/regularity.js",
+        "./spec/support/jasmine.json",
+        "./spec/regularity_spec.js"
+    ],
+    "scripts": {
+        "test": "./node_modules/jasmine/bin/jasmine.js"
+    },
+    "thanks": "Andrew Berls for the original idea and the Regularity ruby gem: (https://rubygems.org/gems/regularity)",
+    "homepage": "https://github.com/oinak/regularity",
+    "keywords": ["regular", "expression", "regex", "regexp", "dsl"],
+    "devDependencies": {
+        "jasmine": "^2.1.1"
+    }
 }
