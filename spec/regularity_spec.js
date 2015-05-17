@@ -42,7 +42,7 @@ describe("Regularity", function() {
         });
     });
 
-    describe("#startWith can only be called as the first method in the chain", function() {
+    describe("#startWith can only be called as the first method in the chain (except for 'done', 'regexp' and the flagging methods)", function() {
         var someDefaultArgumentsFor = {
             'startWith' : ['z'], // this verifies that 'startWith' can only be called once
             'append':     [2, 'a'],
