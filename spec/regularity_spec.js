@@ -50,39 +50,43 @@ describe("Regularity", function() {
     describe("#startWith -- checks against literal regexp", function() {
         var regexp;
 
-        it("single character", function() {
-            regexp = regularity.startWith('a').done();
-            expect(regexp).toEqual(/^a/);
+        describe("unnumbered", function() {
+            it("single character", function() {
+                regexp = regularity.startWith('a').done();
+                expect(regexp).toEqual(/^a/);
+            });
+
+            it("multiple characters", function() {
+                regexp = regularity.startWith('abc').done();
+                expect(regexp).toEqual(/^abc/);
+            });
         });
 
-        it("multiple characters", function() {
-            regexp = regularity.startWith('abc').done();
-            expect(regexp).toEqual(/^abc/);
-        });
+        describe("numbered", function() {
+            it("numbered pattern", function() {
+                regexp = regularity.startWith(4, 'digits').done();
+                expect(regexp).toEqual(/^[0-9]{4}/);
+            });
 
-        it("numbered pattern", function() {
-            regexp = regularity.startWith(4, 'digits').done();
-            expect(regexp).toEqual(/^[0-9]{4}/);
-        });
+            it("one occurrence of one character", function() {
+                regexp = regularity.startWith(1, 'p').done();
+                expect(regexp).toEqual(/^p/);
+            });
 
-        it("one character", function() {
-            regexp = regularity.startWith(1, 'p').done();
-            expect(regexp).toEqual(/^p{1}/);
-        });
+            it("more than one occurence of one character", function() {
+                regexp = regularity.startWith(6, 'p').done();
+                expect(regexp).toEqual(/^p{6}/);
+            });
 
-        it("more than one occurence of one character", function() {
-            regexp = regularity.startWith(6, 'p').done();
-            expect(regexp).toEqual(/^p{6}/);
-        });
+            it("one occurence of several characters", function() {
+                regexp = regularity.startWith(1, 'hey').done();
+                expect(regexp).toEqual(/^hey/);
+            });
 
-        xit("one occurence of several characters", function() {
-            regexp = regularity.startWith(1, 'hey').done();
-            expect(regexp).toEqual(/^(?:hey){1}/);
-        });
-
-        xit("more than one occurence of several characters", function() {
-            regexp = regularity.startWith(5, 'hey').done();
-            expect(regexp).toEqual(/^(?:hey){5}/);
+            xit("more than one occurence of several characters", function() {
+                regexp = regularity.startWith(5, 'hey').done();
+                expect(regexp).toEqual(/^(?:hey){5}/);
+            });
         });
     });
 
