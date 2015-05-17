@@ -28,50 +28,23 @@ describe("Regularity", function() {
     });
 
     describe("#startWith requires that the passed pattern occur exactly at the beginning of the input", function() {
-        var regexp;
         beforeEach(function() {
-            regexp = regularity.startWith('a').done();
+            regularity.startWith('a');
         });
 
         it("matches in the positive case", function() {
-            expect(regexp.test('abcde')).toBe(true);
+            expect(regularity.done().test('abcde')).toBe(true);
         });
 
         it("does not match in the negative case", function() {
-            expect(regexp.test('edcba')).toBe(false);
+            expect(regularity.done().test('edcba')).toBe(false);
         });
-    });
 
-    describe("#startWith can only be called as the first method in the chain (except for 'done', 'regexp' and the flagging methods)", function() {
-        var someDefaultArgumentsFor = {
-            'startWith' : ['z'], // this verifies that 'startWith' can only be called once
-            'append':     [2, 'a'],
-            'then' :      [ 4, 'm'],
-            'endWith':    ['k'],
-            'maybe':      ['foo'],
-            'oneOf':      [['p', 'q']],
-            'between':    [[3, 6], 'alphanumeric'],
-            'zeroOrMore': ['whitespace'],
-            'oneOrMore':  ['lowercase'],
-            'atLeast':    [4, 'b'],
-            'atMost':     [5, 'z']
-        };
-
-        var excludedMethods = ["insensitive", "global", "multiLine", "done", "regexp"];
-
-
-        Object.keys(new Regularity())
-            .filter(function(method) {
-                return (excludedMethods.indexOf(method) === -1);
-            })
-            .forEach(function(method) {
-                it("#startWith can't be called after #" + method, function() {
-                    expect(function() {
-                        regularity[method].apply(regularity, someDefaultArgumentsFor[method])
-                            .startWith('whatever');
-                    }).toThrow(errors.MethodMustBeTheFirstToBeCalled('startWith'));
-                });
-            });
+        it("can only be called once", function() {
+            expect(function() {
+                regularity.startWith('b');
+            }).toThrow(errors.MethodCalledMultipleTimes('startWith'));
+        });
     });
 
     describe("#startWith -- checks against literal regexp", function() {
