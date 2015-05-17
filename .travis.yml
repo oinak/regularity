@@ -1,3 +1,14 @@
 language: node_js
 node_js:
     - "0.10"
+
+# this is the default (see http://docs.travis-ci.com/user/languages/javascript-with-nodejs/#Travis-CI-uses-npm)
+# install: "npm install"
+
+
+# this is the default (see http://docs.travis-ci.com/user/languages/javascript-with-nodejs/#Default-Test-Script)
+# script: "npm test"
+
+
+# run 'istanbul' and post coverage results to coveralls.io
+after_script: "npm post-to-coveralls-io"

@@ -1,22 +1,41 @@
 {
-  "name": "regularity",
-  "main": "regularity",
-  "version": "0.3.0",
-  "author": "Fernando Martinez de la Cueva <me@oinak.com> (http://oinak.com/)",
-  "contributors": [
-    "Elías Alonso <elias@redradix.com> (http://redradix.com/)",
-    "Laura Paredes Viera <laura@wearepeople.io> (http://wearepeople.io)",
-    "Alejandra Goicoechea <alex.goicoechea@wearepeople.io> (http://wearepeople.io)"
-  ],
-  "license": "MIT",
-  "files": [
-    "./lib/regularity.js",
-    "./spec/support/jasmine.json",
-    "./spec/regularity_spec.js"
-  ],
-  "thanks": "Andrew Berls for the original idea and the Regularity ruby gem: (https://rubygems.org/gems/regularity)",
-  "homepage": "https://github.com/oinak/regularity",
-  "devDependencies": {
-    "jasmine": "^2.1.1"
-  }
+    "name": "regularity",
+    "main": "lib/regularity.js",
+    "version": "0.3.0",
+
+    "author": "Fernando Martinez de la Cueva <me@oinak.com> (http://oinak.com/)",
+    "contributors": [
+        "Elías Alonso <elias@redradix.com> (http://redradix.com/)",
+        "Laura Paredes Viera <laura@wearepeople.io> (http://wearepeople.io)",
+        "Alejandra Goicoechea <alex.goicoechea@wearepeople.io> (http://wearepeople.io)"
+    ],
+    "thanks": "Andrew Berls for the original idea and the Regularity ruby gem: (https://rubygems.org/gems/regularity)",
+
+    "homepage": "https://github.com/oinak/regularity",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/oinak/regularity"
+    },
+
+    "license": "MIT",
+
+    "keywords": [
+        "regular",
+        "expression",
+        "regex",
+        "regexp",
+        "dsl"
+    ],
+
+    "scripts": {
+        "test": "jasmine",
+        "istanbul-local": "istanbul cover jasmine",
+        "post-to-coveralls-io": "istanbul cover jasmine && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
+    },
+
+    "devDependencies": {
+        "coveralls": "^2.11.2",
+        "istanbul": "^0.3.14",
+        "jasmine": "^2.1.1"
+    }
 }
