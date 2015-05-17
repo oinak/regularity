@@ -18,6 +18,9 @@
     "./spec/support/jasmine.json",
     "./spec/regularity_spec.js"
   ],
+  "scripts": {
+    "test": "./node_modules/jasmine/bin/jasmine.js"
+  },
   "thanks": "Andrew Berls for the original idea and the Regularity ruby gem: (https://rubygems.org/gems/regularity)",
   "homepage": "https://github.com/oinak/regularity",
   "keywords": ["regular", "expression", "regex", "regexp", "dsl"],
