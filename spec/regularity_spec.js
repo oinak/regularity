@@ -82,25 +82,22 @@ describe("Regularity", function() {
     });
 
     describe("#endWith requires that the passed pattern occur exactly at the end of the input", function() {
-        var regexp;
         beforeEach(function() {
-            regexp = regularity.endWith('a').done();
+            regularity.endWith('a');
         });
 
         it("matches in the positive case", function() {
-            expect(regexp.test('edcba')).toBe(true);
+            expect(regularity.done().test('edcba')).toBe(true);
         });
 
         it("does not match in the negative case", function() {
-            expect(regexp.test('abcde')).toBe(false);
+            expect(regularity.done().test('abcde')).toBe(false);
         });
 
         it("can only be called once", function() {
-
-        });
-
-        it("can only be called as the last method in the chain (except for #done)", function() {
-
+            expect(function() {
+                regularity.endWith('z');
+            }).toThrow(errors.MethodCalledMultipleTimes('endWith'));
         });
     });
 
