@@ -55,6 +55,11 @@ describe("Regularity", function() {
             expect(regexp).toEqual(/^a/);
         });
 
+        it("multiple characters", function() {
+            regexp = regularity.startWith('abc').done();
+            expect(regexp).toEqual(/^abc/);
+        });
+
         it("numbered pattern", function() {
             regexp = regularity.startWith(4, 'digits').done();
             expect(regexp).toEqual(/^[0-9]{4}/);
