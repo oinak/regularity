@@ -11,4 +11,4 @@ node_js:
 
 
 # run 'istanbul' and post coverage results to coveralls.io
-after_script: "npm post-to-coveralls-io"
+after_script: "npm run post-to-coveralls-io"
