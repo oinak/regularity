@@ -1,4 +1,5 @@
 var Regularity = require('../lib/regularity.js');
+var errors = require('../lib/errors');
 
 describe("Regularity", function() {
     var regularity;
@@ -27,82 +28,128 @@ describe("Regularity", function() {
     });
 
     describe("#startWith requires that the passed pattern occur exactly at the beginning of the input", function() {
-        var regexp;
         beforeEach(function() {
-            regexp = regularity.startWith('a').done();
+            regularity.startWith('a');
         });
 
         it("matches in the positive case", function() {
-            expect(regexp.test('abcde')).toBe(true);
+            expect(regularity.done().test('abcde')).toBe(true);
         });
 
         it("does not match in the negative case", function() {
-            expect(regexp.test('edcba')).toBe(false);
+            expect(regularity.done().test('edcba')).toBe(false);
         });
 
         it("can only be called once", function() {
-
-        });
-
-        it("can only be called as the first method in the chain", function() {
-
+            expect(function() {
+                regularity.startWith('b');
+            }).toThrow(errors.MethodCalledMultipleTimes('startWith'));
         });
     });
 
     describe("#startWith -- checks against literal regexp", function() {
         var regexp;
 
-        it("single character", function() {
-            regexp = regularity.startWith('a').done();
-            expect(regexp).toEqual(/^a/);
+        describe("unnumbered", function() {
+            it("single character", function() {
+                regexp = regularity.startWith('a').done();
+                expect(regexp).toEqual(/^a/);
+            });
+
+            it("multiple characters", function() {
+                regexp = regularity.startWith('abc').done();
+                expect(regexp).toEqual(/^abc/);
+            });
         });
 
-        it("numbered pattern", function() {
-            regexp = regularity.startWith(4, 'digits').done();
-            expect(regexp).toEqual(/^[0-9]{4}/);
-        });
+        describe("numbered", function() {
+            it("numbered pattern", function() {
+                regexp = regularity.startWith(4, 'digits').done();
+                expect(regexp).toEqual(/^[0-9]{4}/);
+            });
 
-        it("one character", function() {
-            regexp = regularity.startWith(1, 'p').done();
-            expect(regexp).toEqual(/^p{1}/);
-        });
+            it("one occurrence of one character", function() {
+                regexp = regularity.startWith(1, 'p').done();
+                expect(regexp).toEqual(/^p/);
+            });
 
-        it("more than one occurence of one character", function() {
-            regexp = regularity.startWith(6, 'p').done();
-            expect(regexp).toEqual(/^p{6}/);
-        });
+            it("more than one occurence of one character", function() {
+                regexp = regularity.startWith(6, 'p').done();
+                expect(regexp).toEqual(/^p{6}/);
+            });
 
-        xit("one occurence of several characters", function() {
-            regexp = regularity.startWith(1, 'hey').done();
-            expect(regexp).toEqual(/^(?:hey){1}/);
-        });
+            it("one occurence of several characters", function() {
+                regexp = regularity.startWith(1, 'hey').done();
+                expect(regexp).toEqual(/^hey/);
+            });
 
-        xit("more than one occurence of several characters", function() {
-            regexp = regularity.startWith(5, 'hey').done();
-            expect(regexp).toEqual(/^(?:hey){5}/);
+            xit("more than one occurence of several characters", function() {
+                regexp = regularity.startWith(5, 'hey').done();
+                expect(regexp).toEqual(/^(?:hey){5}/);
+            });
         });
     });
 
     describe("#endWith requires that the passed pattern occur exactly at the end of the input", function() {
-        var regexp;
         beforeEach(function() {
-            regexp = regularity.endWith('a').done();
+            regularity.endWith('a');
         });
 
         it("matches in the positive case", function() {
-            expect(regexp.test('edcba')).toBe(true);
+            expect(regularity.done().test('edcba')).toBe(true);
         });
 
         it("does not match in the negative case", function() {
-            expect(regexp.test('abcde')).toBe(false);
+            expect(regularity.done().test('abcde')).toBe(false);
         });
 
         it("can only be called once", function() {
+            expect(function() {
+                regularity.endWith('z');
+            }).toThrow(errors.MethodCalledMultipleTimes('endWith'));
+        });
+    });
 
+    describe("#endWith -- checks against literal regexp", function() {
+        var regexp;
+
+        describe("unnumbered", function() {
+            it("single character", function() {
+                regexp = regularity.endWith('a').done();
+                expect(regexp).toEqual(/a$/);
+            });
+
+            it("multiple characters", function() {
+                regexp = regularity.endWith('abc').done();
+                expect(regexp).toEqual(/abc$/);
+            });
         });
 
-        it("can only be called as the last method in the chain (except for #done)", function() {
+        describe("numbered", function() {
+            it("numbered pattern", function() {
+                regexp = regularity.endWith(4, 'alphanumeric').done();
+                expect(regexp).toEqual(/[A-Za-z0-9]{4}$/);
+            });
 
+            it("one occurrence of one character", function() {
+                regexp = regularity.endWith(1, 'p').done();
+                expect(regexp).toEqual(/p$/);
+            });
+
+            it("more than one occurence of one character", function() {
+                regexp = regularity.endWith(6, 'p').done();
+                expect(regexp).toEqual(/p{6}$/);
+            });
+
+            it("one occurence of several characters", function() {
+                regexp = regularity.endWith(1, 'hey').done();
+                expect(regexp).toEqual(/hey$/);
+            });
+
+            xit("more than one occurence of several characters", function() {
+                regexp = regularity.endWith(5, 'hey').done();
+                expect(regexp).toEqual(/(?:hey){5}$/);
+            });
         });
     });
 
@@ -209,7 +256,7 @@ describe("Regularity", function() {
 
     });
 
-    describe("#multiline specifies that the input must be treated as multiple lines", function() {
+    describe("#multiLine specifies that the input must be treated as multiple lines", function() {
 
     });
 
