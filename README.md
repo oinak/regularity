@@ -57,11 +57,15 @@ It doesn't matter if the identifier is pluralized, i.e. `then(2, 'letters')` wor
 
 The following expression methods are supported:
 
-`startWith(pattern)`: The line must start with the specified pattern
+`startWith([n], pattern)`: The line must start with the specified pattern.
+If `n` is provided, then `n` consecutive amounts of the pattern are required.
+Passing `1` as `n` is equivalent to not passing `n` at all.
 
 `append(pattern)`: Append a pattern to the end (Also aliased to `then`)
 
-`endWith(pattern)`: The line must end with the specified pattern
+`endWith([n], pattern)`: The line must end with the specified pattern.
+If `n` is provided, then `n` consecutive amounts of the pattern are required.
+Passing `1` as `n` is equivalent to not passing `n` at all.
 
 `maybe(pattern)`: Zero or one of the specified pattern
 
