@@ -209,7 +209,7 @@ describe("Regularity", function() {
 
     });
 
-    describe("#multiline specifies that the input must be treated as multiple lines", function() {
+    describe("#multiLine specifies that the input must be treated as multiple lines", function() {
 
     });
 
