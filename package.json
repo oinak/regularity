@@ -13,11 +13,6 @@
             "url" : "https://github.com/oinak/regularity"
     },
     "license": "MIT",
-    "files": [
-        "./lib/regularity.js",
-        "./spec/support/jasmine.json",
-        "./spec/regularity_spec.js"
-    ],
     "scripts": {
         "test": "./node_modules/jasmine/bin/jasmine.js"
     },
