@@ -168,6 +168,25 @@ describe("Regularity", function() {
         });
     });
 
+    describe("#maybe -- checks against literal regexp", function() {
+        var regexp;
+
+        it("special identifier", function() {
+            regexp = regularity.maybe('letter').done();
+            expect(regexp).toEqual(/(?:[A-Za-z])?/);
+        });
+
+        it("single character", function() {
+            regexp = regularity.maybe('a').done();
+            expect(regexp).toEqual(/(?:a)?/);
+        });
+
+        it("multiple characters", function() {
+            regexp = regularity.maybe('abc').done();
+            expect(regexp).toEqual(/(?:abc)?/);
+        });
+    });
+
     describe("#oneOf requires that at least one of the passed patterns occur", function() {
         var regexp;
         beforeEach(function() {
