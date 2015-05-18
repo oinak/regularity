@@ -63,7 +63,7 @@ describe("Regularity", function() {
         });
 
         describe("numbered", function() {
-            it("numbered pattern", function() {
+            it("numbered special identifier", function() {
                 regexp = regularity.startWith(4, 'digits').done();
                 expect(regexp).toEqual(/^[0-9]{4}/);
             });
@@ -126,7 +126,7 @@ describe("Regularity", function() {
         });
 
         describe("numbered", function() {
-            it("numbered pattern", function() {
+            it("numbered special identifier", function() {
                 regexp = regularity.endWith(4, 'alphanumeric').done();
                 expect(regexp).toEqual(/[A-Za-z0-9]{4}$/);
             });
