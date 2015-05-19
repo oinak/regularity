@@ -20,7 +20,7 @@ when you could express it as:
     then('-').
     then(2, 'letters').
     maybe('#').
-    oneOf(['a','b']).
+    oneOf('a','b').
     between([2,4], 'a').
     insensitive().
     endWith('$').
@@ -73,7 +73,7 @@ Passing `1` as `n` is equivalent to not passing `n` at all.
 
 `maybe(pattern)`: Zero or one of the specified pattern
 
-`oneOf(values)`: Specify an alternation, e.g. `oneOf(['a', 'b', 'c'])`
+`oneOf(firstChoice[, secondChoice[, ...]])`: Specify an alternation, e.g. `oneOf('a', 'b', 'c')`
 
 `between(range, pattern)`: Specify a bounded repetition, e.g. `between([2,4], :digits)`
 
@@ -108,7 +108,7 @@ r.startWith(3, 'digits').
   append('-').
   append(2, 'letters').
   maybe('#').
-  oneOf(['a','b']).
+  oneOf('a','b').
   between([2,4], 'a').
   insensitive().
   endWith('$').

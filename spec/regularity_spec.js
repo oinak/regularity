@@ -190,7 +190,7 @@ describe("Regularity", function() {
     describe("#oneOf requires that at least one of the passed patterns occur", function() {
         var regexp;
         beforeEach(function() {
-            regexp = regularity.oneOf(['a','bb','ccc']).done();
+            regexp = regularity.oneOf('a','bb','ccc').done();
         });
 
         it("matches the first one", function() {
