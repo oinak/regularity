@@ -206,7 +206,7 @@ describe("Regularity", function() {
         });
 
         it("does not match when neither are present", function() {
-            expect(regexp.test('bccddd')).toBe(true);
+            expect(regexp.test('bccddd')).toBe(false);
         });
     });
 
