@@ -210,6 +210,28 @@ describe("Regularity", function() {
         });
     });
 
+    describe("#oneOf -- checks against literal regexp", function() {
+        it("one argument, one character", function() {
+            regexp = regularity.oneOf('a').done();
+            expect(regexp).toEqual(/(?:a)/);
+        });
+
+        it("one argument, more than one character", function() {
+            regexp = regularity.oneOf('bc').done();
+            expect(regexp).toEqual(/(?:bc)/);
+        });
+
+        it("multiple arguments, one character each", function() {
+            regexp = regularity.oneOf('a', 'b', 'c').done();
+            expect(regexp).toEqual(/(?:a|b|c)/);
+        });
+
+        it("multiple arguments, some more than one character", function() {
+            regexp = regularity.oneOf('a', 'bc', 'def', 'gh').done();
+            expect(regexp).toEqual(/(?:a|bc|def|gh)/);
+        });
+    });
+
     describe("#between requires that the passed pattern occur a number of consecutive times within the specified interval", function() {
         var regexp;
         beforeEach(function() {
