@@ -280,9 +280,12 @@ describe("Regularity", function() {
             expect(regexp.test('zkalaamaa')).toBe(false);
             expect(regexp.test('azakalaamaama')).toBe(false);
         });
+    });
 
-        it("throws a native error when the lower bound is greater than the upper bound", function() {
-        });
+    it("#between throws a native error when the lower bound is greater than the upper bound", function() {
+        expect(function() {
+            var regexp = regularity.between([5, 3], 'k').done();
+        }).toThrowError(SyntaxError);
     });
 
     describe("#append requires that the passed pattern occur after what has been declared so far (and before whatever is declared afterwards)", function() {
