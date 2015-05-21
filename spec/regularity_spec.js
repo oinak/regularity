@@ -211,6 +211,26 @@ describe("Regularity", function() {
     });
 
     describe("#oneOf -- checks against literal regexp", function() {
+        var regexp;
+
+        describe("special identifiers", function() {
+            it("digit or tab", function() {
+                 regexp = regularity.oneOf('digit', 'tab').done();
+                 expect(regexp).toEqual(/(?:[0-9]|\t)/);
+            });
+
+            it("uppercase or whitespace", function() {
+                regexp = regularity.oneOf('uppercase', 'whitespace').done();
+                expect(regexp).toEqual(/(?:[A-Z]|\s)/);
+            });
+
+            it("letter or space", function() {
+                regexp = regularity.oneOf('letter', 'space').done();
+                expect(regexp).toEqual(/(?:[A-Za-z]| )/);
+            });
+        });
+
+
         it("one argument, one character", function() {
             regexp = regularity.oneOf('a').done();
             expect(regexp).toEqual(/(?:a)/);
