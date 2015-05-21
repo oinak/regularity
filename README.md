@@ -21,7 +21,7 @@ when you could express it as:
     then(2, 'letters').
     maybe('#').
     oneOf('a','b').
-    between([2,4], 'a').
+    between([2, 4], 'a').
     insensitive().
     endWith('$').
     done();
@@ -75,7 +75,7 @@ Passing `1` as `n` is equivalent to not passing `n` at all.
 
 `oneOf(firstChoice[, secondChoice[, ...]])`: Specify an alternation, e.g. `oneOf('a', 'b', 'c')`
 
-`between(range, pattern)`: Specify a bounded repetition, e.g. `between([2,4], :digits)`
+`between(range, pattern)`: Specify a bounded repetition, e.g. `between([2, 4], 'digits')`
 
 `zeroOrMore(pattern)`: Specify that the pattern or identifer should appear zero or many times
 
@@ -109,7 +109,7 @@ r.startWith(3, 'digits').
   append(2, 'letters').
   maybe('#').
   oneOf('a','b').
-  between([2,4], 'a').
+  between([2, 4], 'a').
   insensitive().
   endWith('$').
   done();

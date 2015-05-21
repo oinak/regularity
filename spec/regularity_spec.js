@@ -288,6 +288,21 @@ describe("Regularity", function() {
         }).toThrowError(SyntaxError);
     });
 
+    describe("#between -- checks against literal regexp", function() {
+        var regexp;
+
+        it("one character", function() {
+            regexp = regularity.between([2, 4], 'a').done();
+            expect(regexp).toEqual(/(?:a){2,4}/);
+        });
+
+        it("more than one character", function() {
+            regexp = regularity.between([2, 4], 'abc').done();
+            expect(regexp).toEqual(/(?:abc){2,4}/);
+        });
+
+    });
+
     describe("#append requires that the passed pattern occur after what has been declared so far (and before whatever is declared afterwards)", function() {
 
     });
