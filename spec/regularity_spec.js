@@ -291,6 +291,23 @@ describe("Regularity", function() {
     describe("#between -- checks against literal regexp", function() {
         var regexp;
 
+        describe("special identifiers", function() {
+            it("digits", function() {
+                regexp = regularity.between([3, 5], 'digits').done();
+                expect(regexp).toEqual(/(?:[0-9]){3,5}/);
+            });
+
+            it("whitespace", function() {
+                regexp = regularity.between([2, 6], 'whitespaces').done();
+                expect(regexp).toEqual(/(?:\s){2,6}/);
+            });
+
+            it("lowercase", function() {
+                regexp = regularity.between([4, 8], 'lowercases').done();
+                expect(regexp).toEqual(/(?:[a-z]){4,8}/);
+            });
+        });
+
         it("one character", function() {
             regexp = regularity.between([2, 4], 'a').done();
             expect(regexp).toEqual(/(?:a){2,4}/);
