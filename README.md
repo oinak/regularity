@@ -81,9 +81,11 @@ Passing `1` as `n` is equivalent to not passing `n` at all.
 
 `oneOrMore(pattern)`: Specify that the pattern or identifer should appear one or more times
 
-`atLeast(n, pattern)`: Specify that the pattern or identifer should appear n or more times
+`atLeast(n, pattern)`: Specify that the pattern or identifer should appear `n` or more times, where `n`
+is a positive integer, typically greater than `1` (for that, you already have `oneOrMore`).
 
-`atMost(n, pattern)`: Specify that the pattern or identifer should appear n or less times
+`atMost(n, pattern)`: Specify that the pattern or identifer should appear `n` or less times
+
 
 The following options methods are supported (may be called just once each):
 

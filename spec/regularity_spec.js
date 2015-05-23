@@ -417,7 +417,24 @@ describe("Regularity", function() {
     });
 
     describe("#atLeast requires that the passed pattern occur consecutively at least the specified number of times", function() {
+        var regexp;
 
+        describe("special identifiers", function() {
+            it("tabs", function() {
+                regexp = regularity.atLeast(4, 'tabs').done();
+                expect(regexp).toEqual(/(?:\t){4,}/);
+            });
+        });
+
+        it("one character", function() {
+            regexp = regularity.atLeast(3, 'a').done();
+            expect(regexp).toEqual(/(?:a){3,}/);
+        });
+
+        it("more than one character", function() {
+            regexp = regularity.atLeast(5, 'abc').done();
+            expect(regexp).toEqual(/(?:abc){5,}/);
+        });
     });
 
     describe("#atMost requires that the passed pattern occur consecutively at most the specified number of times", function() {
