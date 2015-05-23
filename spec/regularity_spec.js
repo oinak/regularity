@@ -458,16 +458,19 @@ describe("Regularity", function() {
         });
     });
 
-    describe("#insensitive specifies that the search must be done case-insensitively", function() {
-
+    it("#insensitive specifies that the search must be done case-insensitively", function() {
+        var regexp = regularity.insensitive().done();
+        expect(regexp.ignoreCase).toBe(true);
     });
 
-    describe("#global specifies that the search must be performed as many times as necessary to identify all matches", function() {
-
+    it("#global specifies that the search must be performed as many times as necessary to identify all matches", function() {
+        var regexp = regularity.global().done();
+        expect(regexp.global).toBe(true);
     });
 
-    describe("#multiLine specifies that the input must be treated as multiple lines", function() {
-
+    it("#multiLine specifies that the input must be treated as multiple lines", function() {
+        var regexp = regularity.multiLine().done();
+        expect(regexp.multiline).toBe(true);
     });
 
     describe("#done", function() {
@@ -475,7 +478,7 @@ describe("Regularity", function() {
             expect(regularity.done() instanceof RegExp).toBe(true);
         });
 
-        it ("returns an empty regexp by default", function() {
+        it("returns an empty regexp by default", function() {
             expect(regularity.done()).toEqual(new RegExp());
         });
     });
