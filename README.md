@@ -16,7 +16,7 @@ It is a JavaScript port of the very fine
 
 Regular expressions are a powerful way
 of matching patterns against text,
-but too often they are 'write once, read never'.
+but too often they are _write once, read never_.
 After all, who wants to try and decipher
 
 ```javascript
@@ -64,7 +64,7 @@ in your terminal, and it should promptly download into the current folder.
 
 ## Usage
 
-When you [`require`](https://nodejs.org/api/modules.html#modules_modules) **regularity**,
+When you [require](https://nodejs.org/api/modules.html#modules_modules) **regularity**,
 all you get is a constructor function.
 To start building a regular expression,
 you should instantiate an object using `new`,
@@ -72,15 +72,16 @@ as demonstrated above, and then call
 any of the methods it provides with the proper arguments.
 
 When you are done building the regular expression,
-tell **regularity** so by calling `done`.
+tell **regularity** so by calling [`done`](#done).
 This call will return a native [`RegExp`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 implementing the pattern which you described
 using the methods of the **regularity** object.
 
-You can then go ahead and call `compile` and
-`test` and `exec` on the returned object.
+You can then go ahead and call **`compile`** and
+**`test`** and **`exec`** on the returned
+[`RegExp`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp).
 
-Notice that you should use one new **regularity** instance
+Notice that you should probably use one new **regularity** instance
 for each regular expression that you want to build.
 If you keep calling methods on an existing **regularity** instance,
 you will be reusing the declarations you made on that object before.
@@ -146,43 +147,43 @@ and `n` stands for any positive integer
 Where `n` is optional (denoted by `[n,]` in the signature),
 passing `1` as `n` is equivalent to not passing `n` at all.
 
-- [**`startWith([n,] pattern)`**](#startWith): Require that `pattern`
+- <a name="startWith">**`startWith([n,] pattern)`**</a>: Require that `pattern`
   occur exactly `n` times at the beginning of the input.
   This method may be called only once.
 
-- [**`append([n,] pattern)`**](#append): Require that the passed pattern
+- <a name="append">**`append([n,] pattern)`**</a>: Require that the passed pattern
   occur exactly `n` times, after what has been declared so far
   and before anything that is declared afterwards.
 
-- [**`then([n,] pattern)`**](#then): This is just an alias for [**`append`**](#append).
+- <a name="then">**`then([n,] pattern)`**</a>: This is just an alias for [**`append`**](#append).
 
-- [**`endWith([n,] pattern)`**](#endWith): Require that `pattern`
+- <a name="endWith">**`endWith([n,] pattern)`**</a>: Require that `pattern`
   occur exactly `n` times at the end of the input.
   This method may be called only once.
 
 
-- [**`maybe(pattern)`**](#maybe): Require that `pattern` occur
+- <a name="maybe">**`maybe(pattern)`**</a>: Require that `pattern` occur
   either one or zero times.
 
-- [**`oneOf(firstPattern[, secondPattern[, ...]])`**](#oneOf): Require that at least
+- <a name="oneOf">[**`oneOf(firstPattern[, secondPattern[, ...]])`**</a>: Require that at least
   one of the passed `pattern`s occur.
 
-- [**`between(range, pattern)`**](#between): Require that `pattern` occur
+- <a name="between">**`between(range, pattern)`**</a>: Require that `pattern` occur
   a number of consecutive times between `range[0]` and `range[1]`,
   both included. `range` is expected to be an array containing
   two positive integers.
 
-- [**`zeroOrMore(pattern)`**](#zeroOrMore): Require that `pattern` occur consecutively
+- <a name="zeroOrMore">**`zeroOrMore(pattern)`**</a>: Require that `pattern` occur consecutively
   any number of consecutive times, including zero times.
 
-- [**`oneOrMore(pattern)`**](#oneOrMore): Require that `pattern` occur consecutively
+- <a name="oneOrMore">**`oneOrMore(pattern)`**</a>: Require that `pattern` occur consecutively
   at least once.
 
-- [**`atLeast(n, pattern)`**](#atLeast): Require that `pattern` occur consecutively
+- <a name="atLeast">**`atLeast(n, pattern)`**</a>: Require that `pattern` occur consecutively
   at least `n` times. Typically, here `n` should be greater than `1`
   (if you wanted it to be exactly `1`, you should use [**`oneOrMore`**](#oneOrMore)).
 
-- [**`atMost(n, pattern)`**](#atMost): Require that `pattern` occur consecutively
+- <a name="atMost">**`atMost(n, pattern)`**</a>: Require that `pattern` occur consecutively
   at most `n` times. Typically, here `n` should be greater than `1`
   (if you wanted it to be exactly `1`, you should use [**`maybe`**](#maybe)).
 
@@ -191,21 +192,21 @@ passing `1` as `n` is equivalent to not passing `n` at all.
 Besides the _DSL methods_, **regularity** instances
 also expose the following methods:
 
-- [**`insensitive()`**](#insensitive): Specify that the regular expression
+- <a name="insensitive">**`insensitive()`**</a>: Specify that the regular expression
   mustn't distinguish between uppercacase and lowercase letters.
 
-- [**`global()`**](#global): Specify that the regular expression
+- <a name="global">**`global()`**</a>: Specify that the regular expression
   must match against all possible matches in the string,
   (instead of matching just the first, which is
   the default behaviour).
 
-- [**`mulltiLine()`**](#multiLine): Specify that the input may span multiple lines.
+- <a name="multiLine">**`mulltiLine()`**</a>: Specify that the input may span multiple lines.
 
-- [**`done()`**](#done): Return the native [`RegExp`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+- <a name="done">**`done()`**</a>: Return the native [`RegExp`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
   object representing the pattern which you described
   by means of the previous calls on that **regularity** instance.
 
-- [**`regexp()`**](#regexp): This is just an alias for [**`done`**](#done).
+- <a name="regexp">**`regexp()`**</a>: This is just an alias for [**`done`**](#done).
 
 
 
@@ -215,6 +216,9 @@ Original idea and [Ruby](https://rubygems.org/gems/regularity)
 [implementation](https://github.com/andrewberls/regularity)
 are by [Andrew Berls](https://github.com/andrewberls/).
 
+If you are unsure about the RegExp you just built,
+[`regulex`](https://jex.im/regulex) is a great tool
+which will draw you a fancy _train diagram_ of it.
 
 
 ## License
