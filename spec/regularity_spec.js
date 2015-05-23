@@ -396,7 +396,24 @@ describe("Regularity", function() {
     });
 
     describe("#oneOrMore requires that the passed pattern occur consecutively at least one time", function() {
+        var regexp;
 
+        describe("special identifiers", function() {
+            it("digits", function() {
+                regexp = regularity.oneOrMore('digits').done();
+                expect(regexp).toEqual(/(?:[0-9])+/);
+            });
+        });
+
+        it("one character", function() {
+            regexp = regularity.oneOrMore('a').done();
+            expect(regexp).toEqual(/(?:a)+/);
+        });
+
+        it("more than one character", function() {
+            regexp = regularity.oneOrMore('abc').done();
+            expect(regexp).toEqual(/(?:abc)+/);
+        });
     });
 
     describe("#atLeast requires that the passed pattern occur consecutively at least the specified number of times", function() {
