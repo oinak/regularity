@@ -371,7 +371,7 @@ describe("Regularity", function() {
     });
 
     it("#then is just an alias for #append", function() {
-
+        expect(regularity.then).toBe(regularity.append);
     });
 
     describe("#zeroOrMore requires that the passed pattern occur any number of consecutive times, including zero", function() {
