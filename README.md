@@ -77,9 +77,9 @@ Passing `1` as `n` is equivalent to not passing `n` at all.
 
 `between(range, pattern)`: Specify a bounded repetition, e.g. `between([2, 4], 'digits')`
 
-`zeroOrMore(pattern)`: Specify that the pattern or identifer should appear zero or many times
+`zeroOrMore(pattern)`: Specify that the pattern or identifer should appear zero or more times
 
-`oneOrMore(pattern)`: Specify that the pattern or identifer should appear one or many times
+`oneOrMore(pattern)`: Specify that the pattern or identifer should appear one or more times
 
 `atLeast(n, pattern)`: Specify that the pattern or identifer should appear n or more times
 
