@@ -83,7 +83,7 @@ describe("Regularity", function() {
                 expect(regexp).toEqual(/^hey/);
             });
 
-            xit("more than one occurence of several characters", function() {
+            it("more than one occurence of several characters", function() {
                 regexp = regularity.startWith(5, 'hey').done();
                 expect(regexp).toEqual(/^(?:hey){5}/);
             });
@@ -146,7 +146,7 @@ describe("Regularity", function() {
                 expect(regexp).toEqual(/hey$/);
             });
 
-            xit("more than one occurence of several characters", function() {
+            it("more than one occurence of several characters", function() {
                 regexp = regularity.endWith(5, 'hey').done();
                 expect(regexp).toEqual(/(?:hey){5}$/);
             });
