@@ -374,7 +374,7 @@ describe("Regularity", function() {
         expect(regularity.then).toBe(regularity.append);
     });
 
-    describe("#zeroOrMore requires that the passed pattern occur any number of consecutive times, including zero", function() {
+    describe("#zeroOrMore requires that the passed pattern occur consecutively any number of consecutive times, including zero", function() {
         var regexp;
 
         describe("special identifiers", function() {
@@ -395,7 +395,7 @@ describe("Regularity", function() {
         });
     });
 
-    describe("#oneOrMore requires that the passed pattern occur consecutively at least one time", function() {
+    describe("#oneOrMore requires that the passed pattern occur consecutively at least once", function() {
         var regexp;
 
         describe("special identifiers", function() {
@@ -458,7 +458,7 @@ describe("Regularity", function() {
         });
     });
 
-    describe("#insensitive specifies that the search must be done case-insensitively", function() {
+    describe("#insensitive specifies that the matching must be done case-insensitively", function() {
         beforeEach(function() {
             regularity.insensitive();
         });
@@ -475,7 +475,7 @@ describe("Regularity", function() {
         });
     });
 
-    describe("#global specifies that the search must be performed as many times as necessary to identify all matches", function() {
+    describe("#global specifies that the matching must be performed as many times as necessary to identify all matches", function() {
         beforeEach(function() {
             regularity.global();
         });
@@ -492,7 +492,7 @@ describe("Regularity", function() {
         });
     });
 
-    describe("#multiLine specifies that the input must be treated as multiple lines", function() {
+    describe("#multiLine specifies that the input may span multiple lines", function() {
         beforeEach(function() {
             regularity.multiLine();
         });

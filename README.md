@@ -87,10 +87,28 @@ you will be reusing the declarations you made on that object before.
 
 
 
-## DSL methods
+## Documentation
 
-Most methods accept the same pattern signature - you can either specify a patterned constraint such as `then("xyz")`,
-or a numbered constraint such as `then(2, 'digits')`. The following special identifers are supported as a shorthand for some common patterns:
+**regularity** instances expose a set of methods
+(the _DSL methods_)
+which allow you to declaratively build
+the regular expression you want.
+They all return `this`,
+so they are chainable.
+Notice that the order in which you call these methods
+determines the order in which the pattern is assembled.
+
+All _DSL methods_ accept at least
+one of the following signatures:
+either a _patterned constraint_,
+which is expected to be a single string,
+such as `then("xyz")`,
+or a _numbered constraint_,
+composed by a count and a pattern,
+such as `atLeast(2, 'ab')`.
+
+In addition, the following _special identifers_
+are supported as a shorthand for some common patterns:
 
 ```javascript
 'digit'        : '[0-9]'
@@ -103,60 +121,99 @@ or a numbered constraint such as `then(2, 'digits')`. The following special iden
 'tab'          : '\t'
 ```
 
-In addition, these identifiers may be pluralized,
+The special identifiers may be pluralized,
 and **regularity** will still understand them.
 This allows you to write more meaningful declarations,
-because `then(2, 'letters')` works in addition to `then(1, 'letter')`.
+because `then(2, 'letters')` works
+in addition to `then(1, 'letter')`.
 
 
-The following expression methods are supported:
+The following is a more detailed explanation
+of all the _DSL methods_ and their signatures.
+Should you have any doubts, please refer to the [spec](./spec/regularity_spec.js),
+where you can find examples of all the supported use cases.
 
-`startWith([n,] pattern)`: The line must start with the specified pattern.
-If `n` is provided, then `n` consecutive amounts of the pattern are required.
-Passing `1` as `n` is equivalent to not passing `n` at all.
+Bear in mind that, in what follows,
+`pattern` stands for any string,
+which migt or might not be
+any of the _special identifiers_,
+and which might include characters
+which need escaping (you don't need
+to escape them yourself, as **regularity**
+will take of that),
+and `n` stands for any positive integer
+(that is, any integer greater than or equal to `1`).
+Where `n` is optional (denoted by `[n,]` in the signature),
+passing `1` as `n` is equivalent to not passing `n` at all.
 
-`append(pattern)`: Append a pattern to the end (Also aliased to `then`).
+- [**`startWith([n,] pattern)`**](#startWith): Require that `pattern`
+  occur exactly `n` times at the beginning of the input.
+  This method may be called only once.
 
-`endWith([n,] pattern)`: The line must end with the specified pattern.
-If `n` is provided, then `n` consecutive amounts of the pattern are required.
-Passing `1` as `n` is equivalent to not passing `n` at all.
+- [**`append([n,] pattern)`**](#append): Require that the passed pattern
+  occur exactly `n` times, after what has been declared so far
+  and before anything that is declared afterwards.
 
-`maybe(pattern)`: Zero or one of the specified pattern.
+- [**`then([n,] pattern)`**](#then): This is just an alias for [**`append`**](#append).
 
-`oneOf(firstChoice[, secondChoice[, ...]])`: Specify an alternation, e.g. `oneOf('a', 'b', 'c')`.
-
-`between(range, pattern)`: Specify a bounded repetition, e.g. `between([2, 4], 'digits')`.
-
-`zeroOrMore(pattern)`: Specify that the pattern or identifer should appear zero or more times.
-
-`oneOrMore(pattern)`: Specify that the pattern or identifer should appear one or more times.
-
-`atLeast(n, pattern)`: Specify that the pattern or identifer should appear `n` or more times, where `n`
-is a positive integer, typically greater than `1` (for that, you already have `oneOrMore`).
-
-`atMost(n, pattern)`: Specify that the pattern or identifer should appear `n` or less times.
+- [**`endWith([n,] pattern)`**](#endWith): Require that `pattern`
+  occur exactly `n` times at the end of the input.
+  This method may be called only once.
 
 
-The following options methods are supported (may be called just once each):
+- [**`maybe(pattern)`**](#maybe): Require that `pattern` occur
+  either one or zero times.
 
-`insensitive()`: Specify that the pattern doesn't distinguish between upcase and lowercase.
+- [**`oneOf(firstPattern[, secondPattern[, ...]])`**](#oneOf): Require that at least
+  one of the passed `pattern`s occur.
 
-`mulltiLine()`: Specify that the pattern may span along several lines.
+- [**`between(range, pattern)`**](#between): Require that `pattern` occur
+  a number of consecutive times between `range[0]` and `range[1]`,
+  both included. `range` is expected to be an array containing
+  two positive integers.
 
-`global()`: Specify that all ocurrences of the pattern are matched instead of just the first.
+- [**`zeroOrMore(pattern)`**](#zeroOrMore): Require that `pattern` occur consecutively
+  any number of consecutive times, including zero times.
 
-The DSL methods are chainable, meaning they return `this`. Notice, however, that in order
-for `regularity` to work properly, the methods must be called in the order in which the
-regular expression is formed, from left to right.
+- [**`oneOrMore(pattern)`**](#oneOrMore): Require that `pattern` occur consecutively
+  at least once.
 
-You can also call `regex` on a Regularity object to
-return a RegExp object created from the specified pattern.
+- [**`atLeast(n, pattern)`**](#atLeast): Require that `pattern` occur consecutively
+  at least `n` times. Typically, here `n` should be greater than `1`
+  (if you wanted it to be exactly `1`, you should use [**`oneOrMore`**](#oneOrMore)).
+
+- [**`atMost(n, pattern)`**](#atMost): Require that `pattern` occur consecutively
+  at most `n` times. Typically, here `n` should be greater than `1`
+  (if you wanted it to be exactly `1`, you should use [**`maybe`**](#maybe)).
+
+
+
+Besides the _DSL methods_, **regularity** instances
+also expose the following methods:
+
+- [**`insensitive()`**](#insensitive): Specify that the regular expression
+  mustn't distinguish between uppercacase and lowercase letters.
+
+- [**`global()`**](#global): Specify that the regular expression
+  must match against all possible matches in the string,
+  (instead of matching just the first, which is
+  the default behaviour).
+
+- [**`mulltiLine()`**](#multiLine): Specify that the input may span multiple lines.
+
+- [**`done()`**](#done): Return the native [`RegExp`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+  object representing the pattern which you described
+  by means of the previous calls on that **regularity** instance.
+
+- [**`regexp()`**](#regexp): This is just an alias for [**`done`**](#done).
 
 
 
 ## Credits
 
-Original idea and [Ruby](https://rubygems.org/gems/regularity) [implementation](https://github.com/andrewberls/regularity) are by Andrew Berls.
+Original idea and [Ruby](https://rubygems.org/gems/regularity)
+[implementation](https://github.com/andrewberls/regularity)
+are by [Andrew Berls](https://github.com/andrewberls/).
 
 
 
@@ -164,6 +221,5 @@ Original idea and [Ruby](https://rubygems.org/gems/regularity) [implementation](
 
 This project is licensed under the
 [MIT License](http://opensource.org/licenses/MIT).
-For more details, see the `LICENSE` file
+For more details, see the [`LICENSE`](./LICENSE) file
 at the root of the repository.
-
