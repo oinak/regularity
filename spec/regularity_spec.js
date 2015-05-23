@@ -458,19 +458,55 @@ describe("Regularity", function() {
         });
     });
 
-    it("#insensitive specifies that the search must be done case-insensitively", function() {
-        var regexp = regularity.insensitive().done();
-        expect(regexp.ignoreCase).toBe(true);
+    describe("#insensitive specifies that the search must be done case-insensitively", function() {
+        beforeEach(function() {
+            regularity.insensitive();
+        });
+
+        it("sets the appropriate native flag", function() {
+            var regexp = regularity.done();
+            expect(regexp.ignoreCase).toBe(true);
+        });
+
+        it("can only be called once", function() {
+            expect(function() {
+                regularity.insensitive();
+            }).toThrow(errors.MethodCalledMultipleTimes('insensitive'));
+        });
     });
 
-    it("#global specifies that the search must be performed as many times as necessary to identify all matches", function() {
-        var regexp = regularity.global().done();
-        expect(regexp.global).toBe(true);
+    describe("#global specifies that the search must be performed as many times as necessary to identify all matches", function() {
+        beforeEach(function() {
+            regularity.global();
+        });
+
+        it("sets the appropriate native flag", function() {
+            var regexp = regularity.done();
+            expect(regexp.global).toBe(true);
+        });
+
+        it("can only be called once", function() {
+            expect(function() {
+                regularity.global();
+            }).toThrow(errors.MethodCalledMultipleTimes('global'));
+        });
     });
 
-    it("#multiLine specifies that the input must be treated as multiple lines", function() {
-        var regexp = regularity.multiLine().done();
-        expect(regexp.multiline).toBe(true);
+    describe("#multiLine specifies that the input must be treated as multiple lines", function() {
+        beforeEach(function() {
+            regularity.multiLine();
+        });
+
+        it("sets the appropriate native flag", function() {
+            var regexp = regularity.done();
+            expect(regexp.multiline).toBe(true);
+        });
+
+        it("can only be called once", function() {
+            expect(function() {
+                regularity.multiLine();
+            }).toThrow(errors.MethodCalledMultipleTimes('multiLine'));
+        });
     });
 
     describe("#done", function() {
