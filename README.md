@@ -216,9 +216,10 @@ Original idea and [Ruby](https://rubygems.org/gems/regularity)
 [implementation](https://github.com/andrewberls/regularity)
 are by [Andrew Berls](https://github.com/andrewberls/).
 
-If you are unsure about the RegExp you just built,
-[`regulex`](https://jex.im/regulex) is a great tool
-which will draw you a fancy _train diagram_ of it.
+If you are unsure about the [`RegExp`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+you just built, [`regulex`](https://jex.im/regulex)
+is a great tool which will draw you
+a fancy _train diagram_ of it.
 
 
 ## License
