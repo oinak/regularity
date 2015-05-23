@@ -65,35 +65,35 @@ The following expression methods are supported:
 If `n` is provided, then `n` consecutive amounts of the pattern are required.
 Passing `1` as `n` is equivalent to not passing `n` at all.
 
-`append(pattern)`: Append a pattern to the end (Also aliased to `then`)
+`append(pattern)`: Append a pattern to the end (Also aliased to `then`).
 
 `endWith([n,] pattern)`: The line must end with the specified pattern.
 If `n` is provided, then `n` consecutive amounts of the pattern are required.
 Passing `1` as `n` is equivalent to not passing `n` at all.
 
-`maybe(pattern)`: Zero or one of the specified pattern
+`maybe(pattern)`: Zero or one of the specified pattern.
 
-`oneOf(firstChoice[, secondChoice[, ...]])`: Specify an alternation, e.g. `oneOf('a', 'b', 'c')`
+`oneOf(firstChoice[, secondChoice[, ...]])`: Specify an alternation, e.g. `oneOf('a', 'b', 'c')`.
 
-`between(range, pattern)`: Specify a bounded repetition, e.g. `between([2, 4], 'digits')`
+`between(range, pattern)`: Specify a bounded repetition, e.g. `between([2, 4], 'digits')`.
 
-`zeroOrMore(pattern)`: Specify that the pattern or identifer should appear zero or more times
+`zeroOrMore(pattern)`: Specify that the pattern or identifer should appear zero or more times.
 
-`oneOrMore(pattern)`: Specify that the pattern or identifer should appear one or more times
+`oneOrMore(pattern)`: Specify that the pattern or identifer should appear one or more times.
 
 `atLeast(n, pattern)`: Specify that the pattern or identifer should appear `n` or more times, where `n`
 is a positive integer, typically greater than `1` (for that, you already have `oneOrMore`).
 
-`atMost(n, pattern)`: Specify that the pattern or identifer should appear `n` or less times
+`atMost(n, pattern)`: Specify that the pattern or identifer should appear `n` or less times.
 
 
 The following options methods are supported (may be called just once each):
 
-`insensitive()`: Specify that the pattern doesn't distinguish between upcase and lowercase
+`insensitive()`: Specify that the pattern doesn't distinguish between upcase and lowercase.
 
-`mulltiLine()`: Specify that the pattern may span along several lines
+`mulltiLine()`: Specify that the pattern may span along several lines.
 
-`global()`: Specify that all ocurrences of the pattern are matched instead of just the first
+`global()`: Specify that all ocurrences of the pattern are matched instead of just the first.
 
 The DSL methods are chainable, meaning they return `this`. Notice, however, that in order
 for `regularity` to work properly, the methods must be called in the order in which the

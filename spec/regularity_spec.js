@@ -438,7 +438,24 @@ describe("Regularity", function() {
     });
 
     describe("#atMost requires that the passed pattern occur consecutively at most the specified number of times", function() {
+        var regexp;
 
+        describe("special identifiers", function() {
+            it("spaces", function() {
+                regexp = regularity.atMost(8, 'spaces').done();
+                expect(regexp).toEqual(/(?: ){0,8}/);
+            });
+        });
+
+        it("one character", function() {
+            regexp = regularity.atMost(3, 'a').done();
+            expect(regexp).toEqual(/(?:a){0,3}/);
+        });
+
+        it("more than one character", function() {
+            regexp = regularity.atMost(5, 'abc').done();
+            expect(regexp).toEqual(/(?:abc){0,5}/);
+        });
     });
 
     describe("#insensitive specifies that the search must be done case-insensitively", function() {
