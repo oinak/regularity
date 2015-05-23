@@ -165,7 +165,7 @@ passing `1` as `n` is equivalent to not passing `n` at all.
 - <a name="maybe">**`maybe(pattern)`**</a>: Require that `pattern` occur
   either one or zero times.
 
-- <a name="oneOf">[**`oneOf(firstPattern[, secondPattern[, ...]])`**</a>: Require that at least
+- <a name="oneOf">**`oneOf(firstPattern[, secondPattern[, ...]])`**</a>: Require that at least
   one of the passed `pattern`s occur.
 
 - <a name="between">**`between(range, pattern)`**</a>: Require that `pattern` occur
