@@ -2,7 +2,7 @@
 
 git stash -q --keep-index
 
-./node_modules/jasmine/bin/jasmine.js
+npm test
 TEST_RESULT="$?"
 
 git stash pop -q
