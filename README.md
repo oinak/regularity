@@ -7,12 +7,13 @@
 
 
 
-JavaScript port of the very fine
-[`regularity` Ruby gem](https://rubygems.org/gems/regularity)
-for easy construction of regular expressions.
 
 **regularity** is a friendly regular expression builder
 for [Node](https://nodejs.org).
+It is a JavaScript port of the very fine
+[`regularity` Ruby gem](https://rubygems.org/gems/regularity).
+
+
 Regular expressions are a powerful way
 of matching patterns against text,
 but too often they are 'write once, read never'.
@@ -155,4 +156,14 @@ return a RegExp object created from the specified pattern.
 
 ## Credits
 
-Original idea and [Ruby]((https://rubygems.org/gems/regularity)) [implementation](https://github.com/andrewberls/regularity) are from Andrew Berls.
+Original idea and [Ruby](https://rubygems.org/gems/regularity) [implementation](https://github.com/andrewberls/regularity) are from Andrew Berls.
+
+
+
+## License
+
+This project is licensed under the
+[MIT License](http://opensource.org/licenses/MIT).
+For more details, see the `LICENSE` file
+at the root of the repository.
+
