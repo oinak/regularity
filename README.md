@@ -17,13 +17,13 @@ It is a JavaScript port of the very fine
 Regular expressions are a powerful way
 of matching patterns against text,
 but too often they are 'write once, read never'.
-After all, who wants to try and deciper
+After all, who wants to try and decipher
 
 ```javascript
 /^(?:[0-9]){3}-(?:[A-Za-z]){2}(?:#)?(?:a|b)(?:a){2,4}\$$/i
 ```
 
-when you could express it as:
+when you could express it as
 
 ```javascript
   var Regularity = require('regularity');
@@ -156,7 +156,7 @@ return a RegExp object created from the specified pattern.
 
 ## Credits
 
-Original idea and [Ruby](https://rubygems.org/gems/regularity) [implementation](https://github.com/andrewberls/regularity) are from Andrew Berls.
+Original idea and [Ruby](https://rubygems.org/gems/regularity) [implementation](https://github.com/andrewberls/regularity) are by Andrew Berls.
 
 
 
