@@ -375,7 +375,24 @@ describe("Regularity", function() {
     });
 
     describe("#zeroOrMore requires that the passed pattern occur any number of consecutive times, including zero", function() {
+        var regexp;
 
+        describe("special identifiers", function() {
+            it("lowercase", function() {
+                regexp = regularity.zeroOrMore('lowercases').done();
+                expect(regexp).toEqual(/(?:[a-z])*/);
+            });
+        });
+
+        it("one character", function() {
+            regexp = regularity.zeroOrMore('a').done();
+            expect(regexp).toEqual(/(?:a)*/);
+        });
+
+        it("more than one character", function() {
+            regexp = regularity.zeroOrMore('abc').done();
+            expect(regexp).toEqual(/(?:abc)*/);
+        });
     });
 
     describe("#oneOrMore requires that the passed pattern occur consecutively at least one time", function() {
