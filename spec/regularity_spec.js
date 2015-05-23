@@ -63,9 +63,9 @@ describe("Regularity", function() {
         });
 
         describe("numbered", function() {
-            it("numbered special identifier", function() {
+            it("special identifiers", function() {
                 regexp = regularity.startWith(4, 'digits').done();
-                expect(regexp).toEqual(/^[0-9]{4}/);
+                expect(regexp).toEqual(/^(?:[0-9]){4}/);
             });
 
             it("one occurrence of one character", function() {
@@ -75,7 +75,7 @@ describe("Regularity", function() {
 
             it("more than one occurence of one character", function() {
                 regexp = regularity.startWith(6, 'p').done();
-                expect(regexp).toEqual(/^p{6}/);
+                expect(regexp).toEqual(/^(?:p){6}/);
             });
 
             it("one occurence of several characters", function() {
@@ -128,7 +128,7 @@ describe("Regularity", function() {
         describe("numbered", function() {
             it("numbered special identifier", function() {
                 regexp = regularity.endWith(4, 'alphanumeric').done();
-                expect(regexp).toEqual(/[A-Za-z0-9]{4}$/);
+                expect(regexp).toEqual(/(?:[A-Za-z0-9]){4}$/);
             });
 
             it("one occurrence of one character", function() {
@@ -138,7 +138,7 @@ describe("Regularity", function() {
 
             it("more than one occurence of one character", function() {
                 regexp = regularity.endWith(6, 'p').done();
-                expect(regexp).toEqual(/p{6}$/);
+                expect(regexp).toEqual(/(?:p){6}$/);
             });
 
             it("one occurence of several characters", function() {
@@ -320,8 +320,54 @@ describe("Regularity", function() {
 
     });
 
-    describe("#append requires that the passed pattern occur after what has been declared so far (and before whatever is declared afterwards)", function() {
+    describe("#append requires that the passed pattern occur after what has been declared so far (and before whatever is declared afterwards), as many times as specified (or one, by default)", function() {
+        var regexp;
 
+        describe("unnumbered", function() {
+            it("one character", function() {
+                regexp = regularity.append('a').done();
+                expect(regexp).toEqual(/a/);
+            });
+
+            it("more than one character", function() {
+                regexp = regularity.append('abc').done();
+                expect(regexp).toEqual(/abc/);
+            });
+        });
+
+        describe("numbered", function() {
+            it("one time, one character", function() {
+                regexp = regularity.append(1, 'a').done();
+                expect(regexp).toEqual(/a/);
+            });
+
+            it("more than one time, one character", function() {
+                regexp = regularity.append(3, 'a').done();
+                expect(regexp).toEqual(/(?:a){3}/);
+            });
+
+            it("one time, more than one character", function() {
+                regexp = regularity.append(1, 'abc').done();
+                expect(regexp).toEqual(/abc/);
+            });
+
+            it("more than one time, more than one character", function() {
+                regexp = regularity.append(5, 'abc').done();
+                expect(regexp).toEqual(/(?:abc){5}/);
+            });
+        });
+
+        describe("special identifiers", function() {
+            it("letters", function() {
+                regexp = regularity.append(3, 'letters').done();
+                expect(regexp).toEqual(/(?:[A-Za-z]){3}/);
+            });
+
+            it("uppercase", function() {
+                regexp = regularity.append(1, 'uppercase').done();
+                expect(regexp).toEqual(/[A-Z]/);
+            });
+        });
     });
 
     it("#then is just an alias for #append", function() {
