@@ -1,4 +1,4 @@
-# regularity - regular expressions for humans
+# regularity — regular expressions for humans
 [![Build Status](https://travis-ci.org/angelsanz/regularity.svg?branch=master)](https://travis-ci.org/angelsanz/regularity)
 [![Coverage Status](https://coveralls.io/repos/angelsanz/regularity/badge.svg?branch=master)](https://coveralls.io/r/angelsanz/regularity?branch=master)
 [![Code Climate](https://codeclimate.com/github/angelsanz/regularity/badges/gpa.svg)](https://codeclimate.com/github/angelsanz/regularity)
@@ -10,8 +10,8 @@
 
 **regularity** is a friendly regular expression builder
 for [Node](https://nodejs.org).
-It is a JavaScript port of the very fine
-[`regularity` Ruby gem](https://rubygems.org/gems/regularity).
+It is a JavaScript port
+of the very fine [`regularity` Ruby gem](https://rubygems.org/gems/regularity).
 
 
 Regular expressions are a powerful way
@@ -50,15 +50,19 @@ But they are still native regular expressions!
 
 ## Installation
 
-To get **regularity**, you need to have [npm](https://www.npmjs.com/)
-installed. It should have been installed along with [Node](https://nodejs.org).
+To get **regularity**,
+you need to have [npm](https://www.npmjs.com/) installed.
+It should have been installed
+along with [Node](https://nodejs.org).
 Once you have it, just run
 
 ```
 $ npm install regularity
 ```
 
-in your terminal, and it should promptly download into the current folder.
+in your terminal,
+and it should promptly download
+into the current folder.
 
 
 
@@ -68,23 +72,27 @@ When you [require](https://nodejs.org/api/modules.html#modules_modules) **regula
 all you get is a constructor function.
 To start building a regular expression,
 you should instantiate an object using `new`,
-as demonstrated above, and then call
-any of the methods it provides with the proper arguments.
+as demonstrated above,
+and then call
+any of the methods it provides
+with the proper arguments.
 
 When you are done building the regular expression,
 tell **regularity** so by calling [`done`](#done).
 This call will return a native [`RegExp`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 implementing the pattern which you described
-using the methods of the **regularity** object.
+using the methods of the **regularity** object,
+which you can then use
+for your own purposes.
 
-You can then go ahead and call **`compile`** and
-**`test`** and **`exec`** on the returned
-[`RegExp`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp).
-
-Notice that you should probably use one new **regularity** instance
-for each regular expression that you want to build.
-If you keep calling methods on an existing **regularity** instance,
-you will be reusing the declarations you made on that object before.
+Notice that you should probably use
+one new **regularity** instance
+for each regular expression
+that you want to build.
+If you keep calling methods
+on an existing **regularity** instance,
+you will be reusing
+the declarations you made on that object before.
 
 
 
@@ -109,7 +117,8 @@ composed by a count and a pattern,
 such as `atLeast(2, 'ab')`.
 
 In addition, the following _special identifers_
-are supported as a shorthand for some common patterns:
+are supported as a shorthand
+for some common patterns:
 
 ```javascript
 'digit'        : '[0-9]'
@@ -124,15 +133,18 @@ are supported as a shorthand for some common patterns:
 
 The special identifiers may be pluralized,
 and **regularity** will still understand them.
-This allows you to write more meaningful declarations,
+This allows you
+to write more meaningful declarations,
 because `then(2, 'letters')` works
 in addition to `then(1, 'letter')`.
 
 
 The following is a more detailed explanation
 of all the _DSL methods_ and their signatures.
-Should you have any doubts, please refer to the [spec](./spec/regularity_spec.js),
-where you can find examples of all the supported use cases.
+Should you have any doubts,
+please refer to the [spec](./spec/regularity_spec.js),
+where you can find examples
+of all the supported use cases.
 
 Bear in mind that, in what follows,
 `pattern` stands for any string,
@@ -141,11 +153,14 @@ any of the _special identifiers_,
 and which might include characters
 which need escaping (you don't need
 to escape them yourself, as **regularity**
-will take of that),
+will take care of that),
 and `n` stands for any positive integer
-(that is, any integer greater than or equal to `1`).
-Where `n` is optional (denoted by `[n,]` in the signature),
-passing `1` as `n` is equivalent to not passing `n` at all.
+(that is, any integer
+greater than or equal to `1`).
+Where `n` is optional
+(denoted by `[n,]` in the signature),
+passing `1` as `n`
+is equivalent to not passing `n` at all.
 
 - <a name="startWith">[**`startWith([n,] pattern)`**](#startWith)</a>:
   Require that `pattern` occur
