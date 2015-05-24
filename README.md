@@ -34,7 +34,7 @@ when you could express it as
       .then('-')
       .then(2, 'letters')
       .maybe('#')
-      .oneOf('a','b')
+      .oneOf('a', 'b')
       .between([2, 4], 'a')
       .endWith('$')
       .insensitive()
@@ -131,7 +131,7 @@ for some common patterns:
 'tab'          : '\t'
 ```
 
-The special identifiers may be pluralized,
+_Special identifiers_ may be pluralized,
 and **regularity** will still understand them.
 This allows you
 to write more meaningful declarations,
