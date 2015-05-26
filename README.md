@@ -99,7 +99,7 @@ the declarations you made on that object before.
 ## Documentation
 
 **regularity** instances expose a set of methods
-(the _DSL methods_)
+(the _[DSL](https://en.wikipedia.org/wiki/Domain-specific_language) methods_)
 which allow you to declaratively build
 the regular expression you want.
 They all return `this`,
