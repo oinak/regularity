@@ -492,9 +492,9 @@ describe("Regularity", function() {
         });
     });
 
-    describe("#multiLine specifies that the input may span multiple lines", function() {
+    describe("#multiline specifies that the input may span multiple lines", function() {
         beforeEach(function() {
-            regularity.multiLine();
+            regularity.multiline();
         });
 
         it("sets the appropriate native flag", function() {
@@ -504,8 +504,8 @@ describe("Regularity", function() {
 
         it("can only be called once", function() {
             expect(function() {
-                regularity.multiLine();
-            }).toThrow(errors.MethodCalledMultipleTimes('multiLine'));
+                regularity.multiline();
+            }).toThrow(errors.MethodCalledMultipleTimes('multiline'));
         });
     });
 
