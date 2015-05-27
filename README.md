@@ -109,7 +109,7 @@ determines the order in which the pattern is assembled.
 
 All _DSL methods_ accept at least
 one of the following signatures:
-either a _patterned constraint_,
+either an _unnumbered constraint_,
 which is expected to be a single string,
 such as `then('xyz')`,
 or a _numbered constraint_,
