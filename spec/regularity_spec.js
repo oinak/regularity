@@ -1,3 +1,5 @@
+"use strict";
+
 var Regularity = require('../lib/regularity.js');
 var errors = require('../lib/errors');
 
