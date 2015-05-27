@@ -1,0 +1,3 @@
+instrumentation:
+    # Prevent tests from being instrumented so as to not skew coverage results
+    excludes: ["**/spec/**"]
