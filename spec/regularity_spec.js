@@ -45,7 +45,7 @@ describe("Regularity", function() {
         it("can only be called once", function() {
             expect(function() {
                 regularity.startWith('b');
-            }).toThrow(errors.MethodCalledMultipleTimes('startWith'));
+            }).toThrow(errors.MethodCalledMoreThanOnce('startWith'));
         });
     });
 
@@ -108,7 +108,7 @@ describe("Regularity", function() {
         it("can only be called once", function() {
             expect(function() {
                 regularity.endWith('z');
-            }).toThrow(errors.MethodCalledMultipleTimes('endWith'));
+            }).toThrow(errors.MethodCalledMoreThanOnce('endWith'));
         });
     });
 
@@ -473,7 +473,7 @@ describe("Regularity", function() {
         it("can only be called once", function() {
             expect(function() {
                 regularity.insensitive();
-            }).toThrow(errors.MethodCalledMultipleTimes('insensitive'));
+            }).toThrow(errors.MethodCalledMoreThanOnce('insensitive'));
         });
     });
 
@@ -490,7 +490,7 @@ describe("Regularity", function() {
         it("can only be called once", function() {
             expect(function() {
                 regularity.global();
-            }).toThrow(errors.MethodCalledMultipleTimes('global'));
+            }).toThrow(errors.MethodCalledMoreThanOnce('global'));
         });
     });
 
@@ -507,7 +507,7 @@ describe("Regularity", function() {
         it("can only be called once", function() {
             expect(function() {
                 regularity.multiline();
-            }).toThrow(errors.MethodCalledMultipleTimes('multiline'));
+            }).toThrow(errors.MethodCalledMoreThanOnce('multiline'));
         });
     });
 
