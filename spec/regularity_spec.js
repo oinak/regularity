@@ -20,7 +20,7 @@ describe("Regularity", function() {
                                      '$', '|', '(', ')', '[',
                                      ']', '{', '}'];
 
-        charactersToBeEscaped.forEach(function testEscapedChar(character) {
+        charactersToBeEscaped.forEach(function testCharacterIsEscaped(character) {
             it("escapes '" + character + "'", function() {
                 var currentRegexp = regularity.append(character).done();
 
@@ -30,26 +30,6 @@ describe("Regularity", function() {
     });
 
     describe("#startWith requires that the passed pattern occur exactly at the beginning of the input", function() {
-        beforeEach(function() {
-            regularity.startWith('a');
-        });
-
-        it("matches in the positive case", function() {
-            expect(regularity.done().test('abcde')).toBe(true);
-        });
-
-        it("does not match in the negative case", function() {
-            expect(regularity.done().test('edcba')).toBe(false);
-        });
-
-        it("can only be called once", function() {
-            expect(function() {
-                regularity.startWith('b');
-            }).toThrow(errors.MethodCalledMoreThanOnce('startWith'));
-        });
-    });
-
-    describe("#startWith -- checks against literal regexp", function() {
         var regexp;
 
         describe("unnumbered", function() {
@@ -90,29 +70,15 @@ describe("Regularity", function() {
                 expect(regexp).toEqual(/^(?:hey){5}/);
             });
         });
-    });
-
-    describe("#endWith requires that the passed pattern occur exactly at the end of the input", function() {
-        beforeEach(function() {
-            regularity.endWith('a');
-        });
-
-        it("matches in the positive case", function() {
-            expect(regularity.done().test('edcba')).toBe(true);
-        });
-
-        it("does not match in the negative case", function() {
-            expect(regularity.done().test('abcde')).toBe(false);
-        });
 
         it("can only be called once", function() {
             expect(function() {
-                regularity.endWith('z');
-            }).toThrow(errors.MethodCalledMoreThanOnce('endWith'));
+                regularity.startWith('a').startWith('b');
+            }).toThrow(errors.MethodCalledMoreThanOnce('startWith'));
         });
     });
 
-    describe("#endWith -- checks against literal regexp", function() {
+    describe("#endWith requires that the passed pattern occur exactly at the end of the input", function() {
         var regexp;
 
         describe("unnumbered", function() {
@@ -153,24 +119,15 @@ describe("Regularity", function() {
                 expect(regexp).toEqual(/(?:hey){5}$/);
             });
         });
+
+        it("can only be called once", function() {
+            expect(function() {
+                regularity.endWith('y').endWith('z');
+            }).toThrow(errors.MethodCalledMoreThanOnce('endWith'));
+        });
     });
 
     describe("#maybe requires that the passed pattern occur either one or zero times", function() {
-        var regexp;
-        beforeEach(function() {
-            regexp = regularity.maybe('a').done();
-        });
-
-        it("matches when the pattern is present", function() {
-            expect(regexp.test('aaaa')).toBe(true);
-        });
-
-        it("matches when the pattern isn't present", function() {
-            expect(regexp.test('bbbb')).toBe(true);
-        });
-    });
-
-    describe("#maybe -- checks against literal regexp", function() {
         var regexp;
 
         it("special identifier", function() {
@@ -190,29 +147,6 @@ describe("Regularity", function() {
     });
 
     describe("#oneOf requires that at least one of the passed patterns occur", function() {
-        var regexp;
-        beforeEach(function() {
-            regexp = regularity.oneOf('a','bb','ccc').done();
-        });
-
-        it("matches the first one", function() {
-            expect(regexp.test('addd')).toBe(true);
-        });
-
-        it("matches the second one", function() {
-            expect(regexp.test('dbb')).toBe(true);
-        });
-
-        it("matches the third one", function() {
-            expect(regexp.test('zkcccl')).toBe(true);
-        });
-
-        it("does not match when neither are present", function() {
-            expect(regexp.test('bccddd')).toBe(false);
-        });
-    });
-
-    describe("#oneOf -- checks against literal regexp", function() {
         var regexp;
 
         describe("special identifiers", function() {
@@ -256,42 +190,6 @@ describe("Regularity", function() {
 
     describe("#between requires that the passed pattern occur a number of consecutive times within the specified interval", function() {
         var regexp;
-        beforeEach(function() {
-            regexp = regularity.between([3, 5], 'a').done();
-        });
-
-        it("matches when there is the right amount of consecutive occurences", function() {
-            expect(regexp.test('aaadd')).toBe(true);
-            expect(regexp.test('llaaaa')).toBe(true);
-            expect(regexp.test('lmaaaaakl')).toBe(true);
-        });
-
-        it("doesn't match when the count is less than the lower bound", function() {
-            expect(regexp.test('addd')).toBe(false);
-            expect(regexp.test('aadkb')).toBe(false);
-        });
-
-        // see https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_special_characters
-        it("*does* match when the count is more than the upper bound", function() {
-            expect(regexp.test('daaaaaalk')).toBe(true);
-            expect(regexp.test('dmaaaaaaaaaalm')).toBe(true);
-        });
-
-        it("doesn't match when there are enough occurences but they are not consecutive", function() {
-            expect(regexp.test('azaazza')).toBe(false);
-            expect(regexp.test('zkalaamaa')).toBe(false);
-            expect(regexp.test('azakalaamaama')).toBe(false);
-        });
-    });
-
-    it("#between throws a native error when the lower bound is greater than the upper bound", function() {
-        expect(function() {
-            var regexp = regularity.between([5, 3], 'k').done();
-        }).toThrowError(SyntaxError);
-    });
-
-    describe("#between -- checks against literal regexp", function() {
-        var regexp;
 
         describe("special identifiers", function() {
             it("digits", function() {
@@ -320,6 +218,13 @@ describe("Regularity", function() {
             expect(regexp).toEqual(/(?:abc){2,4}/);
         });
 
+
+
+        it("throws a native error when the lower bound is greater than the upper bound", function() {
+            expect(function() {
+                var regexp = regularity.between([5, 3], 'k').done();
+            }).toThrowError(SyntaxError);
+        });
     });
 
     describe("#append requires that the passed pattern occur after what has been declared so far (and before whatever is declared afterwards), as many times as specified (or one, by default)", function() {
