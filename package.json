@@ -1,10 +1,41 @@
-{ "name" : "regularity",
-  "main": "regularity",
-  "version": "0.2.0",
+{
+  "name": "regularity",
+  "version": "0.5.0",
+  "main": "lib/regularity.js",
   "author": "Fernando Martinez de la Cueva <me@oinak.com> (http://oinak.com/)",
-  "contributors": ["Elías Alonso <elias@redradix.com> (http://redradix.com/)"],
-  "license" : "MIT",
-  "files": ["./lib/regularity.js"],
-  "thanks": "Andrew Berls for the original idea and the Regularity ruby gem: (https://rubygems.org/gems/regularity)",
-  "homepage": "https://github.com/oinak/regularity"
+  "contributors": [
+    "Elías Alonso <elias@redradix.com> (http://redradix.com/)",
+    "Laura Paredes Viera <laura@wearepeople.io> (http://wearepeople.io)",
+    "Alejandra Goicoechea <alex.goicoechea@wearepeople.io> (http://wearepeople.io)",
+    "Ángel Sanz <angelsanzgit@gmail.com> (https://github.com/angelsanz)"
+  ],
+  "thanks": "Andrew Berls for the original idea and the Regularity Ruby gem (https://rubygems.org/gems/regularity)",
+  "homepage": "https://github.com/oinak/regularity",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oinak/regularity.git"
+  },
+  "bugs": {
+    "url": "https://github.com/oinak/regularity/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "regular",
+    "expression",
+    "regex",
+    "regexp",
+    "dsl"
+  ],
+  "scripts": {
+    "test": "jasmine",
+    "istanbul-local": "istanbul cover jasmine",
+    "post-to-coveralls-io": "istanbul cover jasmine && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.2",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.2",
+    "istanbul": "^0.3.14",
+    "jasmine": "^2.1.1"
+  }
 }

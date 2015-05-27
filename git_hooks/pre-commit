@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+git stash -q --keep-index
+
+npm test
+TEST_RESULT="$?"
+
+git stash pop -q
+
+exit $TEST_RESULT
