@@ -237,7 +237,7 @@ also expose the following methods:
   (instead of matching just the first,
   which is the default behaviour).
 
-- <a name="multiline">[**`mulltiLine()`**](#multiline)</a>:
+- <a name="multiline">[**`multiline()`**](#multiline)</a>:
   Specify that the input
   may span multiple lines.
 
