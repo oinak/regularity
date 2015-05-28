@@ -276,10 +276,10 @@ at the root of the repository.
 [travis-image]:      https://travis-ci.org/angelsanz/regularity.svg?branch=master
 [travis-url]:        https://travis-ci.org/angelsanz/regularity
 [coveralls-image]:   https://coveralls.io/repos/angelsanz/regularity/badge.svg?branch=master
-[coverals-url]:      https://coveralls.io/r/angelsanz/regularity?branch=master
+[coveralls-url]:      https://coveralls.io/r/angelsanz/regularity?branch=master
 [codeclimate-image]: https://codeclimate.com/github/angelsanz/regularity/badges/gpa.svg
 [codeclimate-url]:   https://codeclimate.com/github/angelsanz/regularity
 [nodeico-image]:     https://nodei.co/npm/regularity.png?downloads=true&stars=true
 [nodeico-url]:       https://nodei.co/npm/regularity/
 
-[regexp-mdn]:        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+[regexp-mdn]:        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
