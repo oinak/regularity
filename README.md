@@ -149,7 +149,7 @@ of all the supported use cases.
 
 Bear in mind that, in what follows,
 `pattern` stands for any string,
-which migt or might not be
+which might or might not be
 any of the _special identifiers_,
 and which might include characters
 which need escaping (you don't need
