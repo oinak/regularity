@@ -238,7 +238,8 @@ also expose the following methods:
   which is the default behaviour).
 
 - <a name="multiline">[**`multiline()`**](#multiline)</a>:
-  Specify that the input
+  Specify that the string
+  against which the [`RegExp`][regexp-mdn] is to be matched
   may span multiple lines.
 
 - <a name="done">[**`done()`**](#done)</a>:
