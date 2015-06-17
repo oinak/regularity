@@ -1,6 +1,7 @@
 {
   "name": "regularity",
   "version": "0.5.0",
+  "description": "regular expressions for humans",
   "main": "lib/regularity.js",
   "author": "Fernando Martinez de la Cueva <me@oinak.com> (http://oinak.com/)",
   "contributors": [
