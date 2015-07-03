@@ -370,7 +370,7 @@ describe("Regularity", function() {
             regularity.insensitive();
         });
 
-        it("sets the appropriate native flag", function() {
+        it("sets the 'insensitive' native flag", function() {
             var regexp = regularity.done();
             expect(regexp.ignoreCase).toBe(true);
         });
@@ -387,7 +387,7 @@ describe("Regularity", function() {
             regularity.global();
         });
 
-        it("sets the appropriate native flag", function() {
+        it("sets the 'global' native flag", function() {
             var regexp = regularity.done();
             expect(regexp.global).toBe(true);
         });
@@ -404,7 +404,7 @@ describe("Regularity", function() {
             regularity.multiline();
         });
 
-        it("sets the appropriate native flag", function() {
+        it("sets the 'multiline' native flag", function() {
             var regexp = regularity.done();
             expect(regexp.multiline).toBe(true);
         });

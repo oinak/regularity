@@ -1,9 +1,10 @@
 # regularity — regular expressions for humans
-[![Build Status](https://travis-ci.org/angelsanz/regularity.svg?branch=master)](https://travis-ci.org/angelsanz/regularity)
-[![Coverage Status](https://coveralls.io/repos/angelsanz/regularity/badge.svg?branch=master)](https://coveralls.io/r/angelsanz/regularity?branch=master)
-[![Code Climate](https://codeclimate.com/github/angelsanz/regularity/badges/gpa.svg)](https://codeclimate.com/github/angelsanz/regularity)
 
-[![NPM](https://nodei.co/npm/regularity.png?downloads=true&stars=true)](https://nodei.co/npm/regularity/)
+[![Build Status][travis-image]][travis-url]
+[![Coverage Status][coveralls-image]][coveralls-url]
+[![Code Climate][codeclimate-image]][codeclimate-url]
+
+[![NPM][nodeico-image]][nodeico-url]
 
 
 
@@ -79,7 +80,7 @@ with the proper arguments.
 
 When you are done building the regular expression,
 tell **regularity** so by calling [`done`](#done).
-This call will return a native [`RegExp`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+This call will return a native [`RegExp`][regexp-mdn]
 implementing the pattern which you described
 using the methods of the **regularity** object,
 which you can then use
@@ -148,7 +149,7 @@ of all the supported use cases.
 
 Bear in mind that, in what follows,
 `pattern` stands for any string,
-which migt or might not be
+which might or might not be
 any of the _special identifiers_,
 and which might include characters
 which need escaping (you don't need
@@ -236,12 +237,13 @@ also expose the following methods:
   (instead of matching just the first,
   which is the default behaviour).
 
-- <a name="multiline">[**`mulltiLine()`**](#multiline)</a>:
-  Specify that the input
+- <a name="multiline">[**`multiline()`**](#multiline)</a>:
+  Specify that the string
+  against which the [`RegExp`][regexp-mdn] is to be matched
   may span multiple lines.
 
 - <a name="done">[**`done()`**](#done)</a>:
-  Return the native [`RegExp`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) object
+  Return the native [`RegExp`][regexp-mdn] object
   representing the pattern which you described
   by means of the previous calls
   on that **regularity** instance.
@@ -257,7 +259,7 @@ Original idea and [Ruby](https://rubygems.org/gems/regularity)
 [implementation](https://github.com/andrewberls/regularity)
 are by [Andrew Berls](https://github.com/andrewberls/).
 
-If you are unsure about the [`RegExp`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+If you are unsure about the [`RegExp`][regexp-mdn]
 you just built, [`regulex`](https://jex.im/regulex)
 is a great tool which will draw you
 a fancy _railroad diagram_ of it.
@@ -269,3 +271,16 @@ This project is licensed under the
 [MIT License](http://opensource.org/licenses/MIT).
 For more details, see the [`LICENSE`](./LICENSE) file
 at the root of the repository.
+
+
+
+[travis-image]:      https://travis-ci.org/angelsanz/regularity.svg?branch=master
+[travis-url]:        https://travis-ci.org/angelsanz/regularity
+[coveralls-image]:   https://coveralls.io/repos/angelsanz/regularity/badge.svg?branch=master
+[coveralls-url]:     https://coveralls.io/r/angelsanz/regularity?branch=master
+[codeclimate-image]: https://codeclimate.com/github/angelsanz/regularity/badges/gpa.svg
+[codeclimate-url]:   https://codeclimate.com/github/angelsanz/regularity
+[nodeico-image]:     https://nodei.co/npm/regularity.png?downloads=true&stars=true
+[nodeico-url]:       https://nodei.co/npm/regularity/
+
+[regexp-mdn]:        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
